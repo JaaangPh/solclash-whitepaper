@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SOL Clash — Whitepaper</title>
+  <link rel="icon" href="images/favicon.ico"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ── SIDEBAR OVERLAY ──────────────────────────────────────── -->
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- ── SIDEBAR ──────────────────────────────────────────────── -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <img class="logo-img" src="images/logo.png" alt="SOL Clash logo"/>
+    <div>
+      <div class="logo-text">SOL Clash</div>
+      <div class="logo-sub">Whitepaper</div>
+    </div>
+  </div>
+
+  <div class="sidebar-version">
+    <span class="ver-badge">v1.0 &middot; June 2026</span>
+  </div>
+
+  <nav class="sidebar-nav" id="sidebar-nav">
+    <div class="nav-group">
+      <div class="nav-group-label">Getting started</div>
+      <a class="nav-item active" href="#intro">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2" fill="currentColor" stroke="none"/></svg></span>
+        Introduction
+      </a>
+      <a class="nav-item" href="#vision">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3C4.5 3 2 8 2 8s2.5 5 6 5 6-5 6-5-2.5-5-6-5z"/><circle cx="8" cy="8" r="2"/></svg></span>
+        Vision &amp; mission
+      </a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">The game</div>
+      <a class="nav-item" href="#how-to-play">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3,2 13,8 3,14"/></svg></span>
+        How to play
+      </a>
+      <a class="nav-item sub" href="#singleplayer">
+        <span class="ni sub-dot"></span>Singleplayer arena
+      </a>
+      <a class="nav-item sub" href="#multiplayer">
+        <span class="ni sub-dot"></span>Multiplayer arena
+      </a>
+      <a class="nav-item" href="#ranks">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l1.8 3.6L14 6.3l-3 2.9.7 4.1L8 11.1l-3.7 2.2.7-4.1-3-2.9 4.2-.7z"/></svg></span>
+        Rank system
+      </a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Economy</div>
+      <a class="nav-item" href="#token">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M6 6.5h3a1.5 1.5 0 0 1 0 3H6"/></svg></span>
+        $CLASH token
+      </a>
+      <a class="nav-item" href="#rewards">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l1.4 4.2H14l-3.7 2.7 1.4 4.3L8 10.5l-3.7 2.7 1.4-4.3L2 6.2h4.6z"/></svg></span>
+        Reward structure
+      </a>
+      <a class="nav-item" href="#nft">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg></span>
+        NFT &amp; picks
+      </a>
+      <a class="nav-item" href="#marketplace">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12l-1.5 6H3.5L2 4z"/><circle cx="5.5" cy="13" r="1"/><circle cx="10.5" cy="13" r="1"/><path d="M2 2h1.5l.5 2"/></svg></span>
+        Marketplace
+      </a>
+      <a class="nav-item" href="#leaderboard">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="9" width="4" height="6" rx="1"/><rect x="6" y="5" width="4" height="10" rx="1"/><rect x="11" y="2" width="4" height="13" rx="1"/></svg></span>
+        Leaderboard
+      </a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Platform</div>
+      <a class="nav-item" href="#fairplay">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l5 2v4c0 3-2.5 5.5-5 6-2.5-.5-5-3-5-6V4z"/><path d="M5.5 8l2 2 3-3"/></svg></span>
+        Fair play
+      </a>
+      <a class="nav-item" href="#wallet">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="9" rx="1.5"/><path d="M2 7h12"/><circle cx="11" cy="10" r="1" fill="currentColor" stroke="none"/></svg></span>
+        Your wallet
+      </a>
+      <a class="nav-item" href="#roadmap">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h10M9 5l3 3-3 3"/></svg></span>
+        Roadmap
+      </a>
+      <a class="nav-item" href="#disclaimer">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v4"/><circle cx="8" cy="5" r=".5" fill="currentColor" stroke="none"/></svg></span>
+        Disclaimer
+      </a>
+      <a class="nav-item" href="#contacts">
+        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12v9H2z" rx="1"/><path d="M2 4l6 5 6-5"/></svg></span>
+        Contacts
+      </a>
+    </div>
+  </nav>
+</aside>
+
+<!-- ── MAIN ─────────────────────────────────────────────────── -->
+<div class="main" id="main">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="breadcrumb">
+        SOL Clash <span class="sep">/</span> <span>Whitepaper</span>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button class="tb-btn">Last updated: Jun 2026</button>
+      <button class="tb-btn primary">v1.0</button>
+    </div>
+  </div>
+
+  <div class="page" id="page-content">
+
+    <!-- ════════════════════════════════════════════════════════
+         INTRO
+    ════════════════════════════════════════════════════════ -->
+    <section id="intro">
+      <div class="page-badge">Play-to-Earn &middot; Solana</div>
+      <h1>SOL Clash Whitepaper</h1>
+      <p class="page-intro">
+        SOL Clash is a competitive play-to-earn gaming platform built on the Solana blockchain.
+        Players battle in real-time Rock &mdash; Paper &mdash; Scissors arenas, earn <strong>$CLASH</strong> tokens
+        through skill-based performance, and spend them in a living in-game economy &mdash; all without ever leaving the platform.
+      </p>
+
+      <div class="stat-strip">
+        <div class="stat-cell">
+          <div class="stat-n purple">$CLASH</div>
+          <div class="stat-l">Native reward token</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-n green">Solana</div>
+          <div class="stat-l">Blockchain network</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-n gold">1v1 + Solo</div>
+          <div class="stat-l">Arena formats</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-n white">5 Tiers</div>
+          <div class="stat-l">Rank progression</div>
+        </div>
+      </div>
+
+      <h2>What is SOL Clash?</h2>
+      <p>SOL Clash is built on one idea: <strong>your skill should have real value</strong>. It is a browser-based arena game where every match is a competitive Rock &mdash; Paper &mdash; Scissors battle. Win cleanly, earn more. Lose, you still earn something. Every outcome is recorded on-chain and every reward is distributed automatically &mdash; no middleman, no manual payouts.</p>
+      <p>The platform is designed to be accessible to anyone. You do not need a crypto wallet, a browser extension, or any prior blockchain experience. Sign in with Google, GitHub, or Discord and you are ready to play in under a minute. Your Solana wallet is created for you automatically in the background.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-green">&#9650;</div>
+            <h3 style="color:var(--accent2)">Earn by playing</h3>
+          </div>
+          <p style="font-size:13px">Every match &mdash; win, draw, or lose &mdash; distributes $CLASH, Battle Points, and EXP. Better performance means better rewards. Skill is the only variable.</p>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-purple">&#9670;</div>
+            <h3>Rank up &amp; compete</h3>
+          </div>
+          <p style="font-size:13px">Progress through 5 rank tiers from Bronze to Diamond. Higher ranks unlock better rewards and put you in contention for the seasonal leaderboard prize pool.</p>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-blue">&#8862;</div>
+            <h3>Own your assets</h3>
+          </div>
+          <p style="font-size:13px">Arena picks are NFTs on Solana. Your $CLASH balance lives on-chain. Everything you earn is yours &mdash; withdraw to any Solana wallet at any time.</p>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-gold">&#127942;</div>
+            <h3>Seasonal prizes</h3>
+          </div>
+          <p style="font-size:13px">The top 15 players on the seasonal leaderboard share a prize pool of at least 10,000 $CLASH. The pool grows with every marketplace transaction and $CLASH swap.</p>
+        </div>
+      </div>
+
+      <div class="hint-box purple">
+        <span class="hint-icon">&#9672;</span>
+        <div>
+          <div class="hint-title">Core principle</div>
+          <p>SOL Clash rewards skill, not luck. Every $CLASH token distributed is tied to a verified match outcome &mdash; not a random drop or pay-to-win mechanic.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         VISION & MISSION
+    ════════════════════════════════════════════════════════ -->
+    <section id="vision">
+      <h2>Vision &amp; mission</h2>
+      <p class="page-intro">We believe the future of gaming is player-owned. SOL Clash exists to make that real.</p>
+
+      <h3>The problem</h3>
+      <p>In traditional gaming, players invest hundreds of hours, build real skills, and generate enormous value &mdash; but own nothing. Items live on centralized servers. Accounts can be banned. Earnings disappear when a game shuts down. The value flows one way: from the player to the platform.</p>
+
+      <div class="hint-box warning">
+        <span class="hint-icon">&#9678;</span>
+        <div>
+          <div class="hint-title">The status quo</div>
+          <p>Millions of competitive game players earn nothing for their time and skill. In-game economies are controlled entirely by the developer, and player assets have no real-world value or portability.</p>
+        </div>
+      </div>
+
+      <h3>Our solution</h3>
+      <p>SOL Clash flips the model. Every win, every token, every item you earn is yours &mdash; on-chain, verifiable, and transferable. The game does not gatekeep your earnings. There are no withdrawal fees hidden in fine print. The rules of the economy are written in this document and enforced by code.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-green">&#10003;</div>
+            <h3 style="color:var(--accent2)">Transparent economy</h3>
+          </div>
+          <p style="font-size:13px">Every reward formula, every distribution rule, every fee is documented here and applied uniformly. No hidden mechanics, no surprise changes without notice.</p>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-purple">&#9670;</div>
+            <h3>Skill-first design</h3>
+          </div>
+          <p style="font-size:13px">Rewards scale with performance. A perfect win pays more than a standard win. A flawless PvP victory pays more than a close one. Grinding without skill does not pay as well as playing well.</p>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-blue">&#9723;</div>
+            <h3>True ownership</h3>
+          </div>
+          <p style="font-size:13px">Your wallet, your tokens, your NFTs. SOL Clash never holds your funds. Everything is on Solana. You can withdraw, trade, or transfer at any time without permission from the platform.</p>
+        </div>
+      </div>
+
+      <h3>Our mission</h3>
+      <p>To build a transparent, skill-rewarding arena where the best players are genuinely compensated, and where the in-game economy is governed by fair rules that everyone can read, verify, and trust. SOL Clash is not just a game &mdash; it is a proof of concept that competitive gaming and real financial ownership can coexist.</p>
+
+      <div class="hint-box success">
+        <span class="hint-icon">&#10022;</span>
+        <div>
+          <div class="hint-title">Long-term commitment</div>
+          <p>SOL Clash is built to grow. Phases 3, 4, and 5 on the roadmap introduce on-chain verification, a public $CLASH token launch, and ecosystem expansion &mdash; each step increasing transparency and player ownership.</p>
+        </div>
+      </div>
+    </section>
+    <!-- ════════════════════════════════════════════════════════
+         HOW TO PLAY
+    ════════════════════════════════════════════════════════ -->
+    <section id="how-to-play">
+      <h2>How to play</h2>
+      <p>SOL Clash is accessible to anyone with a Google, GitHub, or Discord account. No crypto knowledge is required to start &mdash; your Solana wallet is created automatically when you register. Getting started takes under a minute.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-num done">01</div>
+          <div class="step-body">
+            <h3>Create your account</h3>
+            <p>Sign up instantly using your existing Google, GitHub, or Discord account. A non-custodial Solana wallet is generated for you automatically &mdash; no extensions or seed phrases required to start playing.</p>
+            <!-- Auth provider buttons -->
+            <div class="auth-buttons">
+              <div class="auth-btn auth-google">
+                <img class="auth-provider-img" src="images/google.jpg" alt="Google"/>
+                <span>Continue with Google</span>
+              </div>
+              <div class="auth-btn auth-github">
+                <svg class="auth-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <span>Continue with GitHub</span>
+              </div>
+              <div class="auth-btn auth-discord">
+                <svg class="auth-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                </svg>
+                <span>Continue with Discord</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num done">02</div>
+          <div class="step-body">
+            <h3>Get your arena picks</h3>
+            <p>Purchase picks from the marketplace &mdash; these are your entry tokens for premium arena matches. Pick packs are available in various sizes at tiered pricing.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num active">03</div>
+          <div class="step-body">
+            <h3>Enter the arena</h3>
+            <p>Choose Solo Arena for single-player practice and base rewards, or PvP Arena for real-time 1v1 matches against other players with higher reward ceilings.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Win and earn $CLASH</h3>
+            <p>Rewards are automatically distributed after each match. The better your performance &mdash; and the cleaner your win &mdash; the more $CLASH you receive.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h3>Spend, trade, or hold</h3>
+            <p>Use $CLASH to buy marketplace items, upgrade your battle points, or hold for future value as the platform grows. SOL withdrawals are always available.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         SINGLEPLAYER ARENA
+    ════════════════════════════════════════════════════════ -->
+    <section id="singleplayer">
+      <h2>Singleplayer arena</h2>
+      <p>Compete at your own pace against the game system. No opponents to wait for &mdash; perfect for grinding experience, practicing strategies, and earning steady baseline $CLASH rewards.</p>
+
+      <div class="hint-box info">
+        <span class="hint-icon">&#8505;</span>
+        <div>
+          <div class="hint-title">Attempt cost</div>
+          <p>Each singleplayer match consumes <strong>1 attempt</strong> from your active pick. Each pick NFT comes loaded with <strong>20 attempts</strong>.</p>
+        </div>
+      </div>
+
+      <p style="font-size:13px;color:var(--hint);margin-bottom:6px;text-transform:uppercase;letter-spacing:.07em;font-weight:600">Choose your move</p>
+      <div class="move-select-strip">
+        <div class="move-select-item">
+          <img class="move-select-img" src="images/select/rock-select.png" alt="Rock"/>
+          <span class="move-select-label">Rock</span>
+        </div>
+        <div class="move-select-item">
+          <img class="move-select-img" src="images/select/paper-select.png" alt="Paper"/>
+          <span class="move-select-label">Paper</span>
+        </div>
+        <div class="move-select-item">
+          <img class="move-select-img" src="images/select/scissors-select.png" alt="Scissors"/>
+          <span class="move-select-label">Scissors</span>
+        </div>
+      </div>
+
+      <p style="font-size:13px;color:var(--hint);margin-bottom:6px;text-transform:uppercase;letter-spacing:.07em;font-weight:600">Live match</p>
+      <div class="arena-showcase">
+        <div class="arena-side left">
+          <img class="arena-move-img" src="images/left/rock-left.png" alt="Player — Rock"/>
+          <span class="arena-move-label">You</span>
+        </div>
+        <div class="arena-vs">VS</div>
+        <div class="arena-side right">
+          <img class="arena-move-img" src="images/right/scissors-right.png" alt="System — Scissors"/>
+          <span class="arena-move-label">System</span>
+        </div>
+      </div>
+
+      <div class="card-grid" style="margin-top:24px">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-green">&#9650;</div>
+            <h3 style="color:var(--accent2)">Rewards</h3>
+          </div>
+          <p style="font-size:13px">Win standard &middot; Win no-loss &middot; Win perfect &middot; Draw &middot; Lose &mdash; all earn $CLASH, BP, and EXP.</p>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-blue">&#9201;</div>
+            <h3>Attempt usage</h3>
+          </div>
+          <p style="font-size:13px">1 attempt per match. Each pick NFT holds 20 attempts. When attempts run out, activate a new pick from your inventory.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         MULTIPLAYER ARENA
+    ════════════════════════════════════════════════════════ -->
+    <section id="multiplayer">
+      <h2>Multiplayer arena</h2>
+      <p>Face real players in live 1v1 matches. Matchmaking pairs you with an available opponent automatically. Higher skill ceiling means significantly higher $CLASH rewards per match.</p>
+
+      <div class="hint-box warning">
+        <span class="hint-icon">&#9678;</span>
+        <div>
+          <div class="hint-title">Attempt cost</div>
+          <p>Each multiplayer match consumes <strong>2 attempts</strong> from your active pick. Higher cost reflects the higher reward potential of PvP matches.</p>
+        </div>
+      </div>
+
+      <p style="font-size:13px;color:var(--hint);margin-bottom:6px;text-transform:uppercase;letter-spacing:.07em;font-weight:600">Live PvP match</p>
+      <div class="arena-showcase">
+        <div class="arena-side left">
+          <img class="arena-move-img" src="images/left/rock-left.png" alt="Player — Rock"/>
+          <span class="arena-move-label">You</span>
+        </div>
+        <div class="arena-vs">VS</div>
+        <div class="arena-side right">
+          <img class="arena-move-img" src="images/right/scissors-right.png" alt="Opponent — Scissors"/>
+          <span class="arena-move-label">Opponent</span>
+        </div>
+      </div>
+
+      <div class="card-grid" style="margin-top:24px">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-purple">&#9876;</div>
+            <h3>Matchmaking</h3>
+          </div>
+          <p style="font-size:13px">Real-time pairing connects players as they enter the queue. A built-in cooldown prevents the same two players from being matched repeatedly in a short window.</p>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-gold">&#127942;</div>
+            <h3>Higher rewards</h3>
+          </div>
+          <p style="font-size:13px">PvP rewards scale with rank and include Flawless Victory bonuses. Winning cleanly against real opponents pays significantly more than singleplayer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         RANKS
+    ════════════════════════════════════════════════════════ -->
+    <section id="ranks">
+      <h2>Rank system</h2>
+      <p>Every player starts at Bronze and advances by earning experience through match participation. Higher ranks unlock exclusive marketplace content and signal competitive standing on the global leaderboard.</p>
+
+      <div class="table-wrap">
+        <!-- Header row -->
+        <div style="background:var(--surface);border-bottom:1px solid var(--border)">
+          <div class="tier-row" style="border-bottom:none;padding-bottom:8px">
+            <div style="font-size:10.5px;color:var(--hint);font-weight:600;letter-spacing:.07em;text-transform:uppercase">Badge</div>
+            <div style="font-size:10.5px;color:var(--hint);font-weight:600;letter-spacing:.07em;text-transform:uppercase">Rank</div>
+            <div style="font-size:10.5px;color:var(--hint);font-weight:600;letter-spacing:.07em;text-transform:uppercase">Level range</div>
+          </div>
+        </div>
+        <!-- Bronze -->
+        <div class="tier-row">
+          <img class="tier-badge-img" src="images/badges/bronze.png" alt="Bronze badge"/>
+          <div>
+            <div class="tier-name">Bronze</div>
+            <div class="tier-perk">Every journey begins.</div>
+          </div>
+          <div class="tier-range">Lv 1 &ndash; 10</div>
+        </div>
+        <!-- Silver -->
+        <div class="tier-row">
+          <img class="tier-badge-img" src="images/badges/silver.png" alt="Silver badge"/>
+          <div>
+            <div class="tier-name">Silver</div>
+            <div class="tier-perk">Building momentum.</div>
+          </div>
+          <div class="tier-range">Lv 11 &ndash; 30</div>
+        </div>
+        <!-- Gold -->
+        <div class="tier-row">
+          <img class="tier-badge-img" src="images/badges/gold.png" alt="Gold badge"/>
+          <div>
+            <div class="tier-name">Gold</div>
+            <div class="tier-perk">Shining with achievement.</div>
+          </div>
+          <div class="tier-range">Lv 31 &ndash; 50</div>
+        </div>
+        <!-- Platinum -->
+        <div class="tier-row">
+          <img class="tier-badge-img" src="images/badges/platinum.png" alt="Platinum badge"/>
+          <div>
+            <div class="tier-name">Platinum</div>
+            <div class="tier-perk">Excellence unlocked.</div>
+          </div>
+          <div class="tier-range">Lv 51 &ndash; 80</div>
+        </div>
+        <!-- Diamond -->
+        <div class="tier-row">
+          <img class="tier-badge-img" src="images/badges/diamond.png" alt="Diamond badge"/>
+          <div>
+            <div class="tier-name">Diamond</div>
+            <div class="tier-perk">The pinnacle of success.</div>
+          </div>
+          <div class="tier-range">Lv 81+</div>
+        </div>
+      </div>
+
+      <p>Experience required per level scales progressively &mdash; earlier levels are faster to complete, encouraging new players to engage with the system before the curve steepens at higher tiers.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         TOKEN
+    ════════════════════════════════════════════════════════ -->
+    <section id="token">
+      <div class="section-hero-img">
+        <img src="images/clash.png" alt="$CLASH token"/>
+      </div>
+      <h2>The $CLASH token</h2>
+      <p>$CLASH is the native utility token of the SOL Clash ecosystem. It is earned exclusively through gameplay performance and spent within the platform. $CLASH is not purchasable with fiat &mdash; it must be won.</p>
+
+      <div class="hint-box success">
+        <span class="hint-icon">&#10022;</span>
+        <div>
+          <div class="hint-title">Earned, not bought</div>
+          <p>$CLASH cannot be purchased directly. Every token in circulation was won in a match, creating a supply that is always tied to real competitive activity.</p>
+        </div>
+      </div>
+
+      <h3>How $CLASH flows</h3>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-green">&#9650;</div>
+            <h3 style="color:var(--accent2)">Token inflows</h3>
+          </div>
+          <p style="font-size:13px">Arena match wins &middot; Perfect match bonuses &middot; No-loss streak bonuses &middot; Battle points milestones &middot; Referral rewards</p>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-blue">&#9660;</div>
+            <h3 style="color:#9aabff">Token outflows</h3>
+          </div>
+          <p style="font-size:13px">Arena picks &middot; Battle points upgrades &middot; Feature unlocks</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         REWARDS
+    ════════════════════════════════════════════════════════ -->
+    <section id="rewards">
+      <h2>Reward structure</h2>
+      <p>Every match credits rewards instantly. Select a category and mode below to explore the full breakdown.</p>
+
+      <!-- ── CATEGORY TABS ──────────────────────────────────── -->
+      <div class="rtab-bar" role="tablist" aria-label="Reward categories">
+        <button class="rtab-btn active" role="tab" aria-selected="true"
+                aria-controls="rpanel-clash" id="rtab-clash" data-tab="clash">
+          <img class="rtab-img" src="images/clash.png" alt="$CLASH"/>
+          <span class="rtab-label">$CLASH</span>
+        </button>
+        <button class="rtab-btn" role="tab" aria-selected="false"
+                aria-controls="rpanel-bp" id="rtab-bp" data-tab="bp">
+          <img class="rtab-img" src="images/badges/bp.png" alt=""/>
+          <span class="rtab-label">Battle Points</span>
+        </button>
+        <button class="rtab-btn" role="tab" aria-selected="false"
+                aria-controls="rpanel-exp" id="rtab-exp" data-tab="exp">
+          <img class="rtab-img" src="images/exp.png" alt="EXP"/>
+          <span class="rtab-label">EXP</span>
+        </button>
+      </div>
+
+      <!-- ══ PANEL: $CLASH ══ -->
+      <div class="rtab-panel active" id="rpanel-clash" role="tabpanel" aria-labelledby="rtab-clash">
+        <div class="rmode-toggle">
+          <button class="rmode-btn active" data-mode="clash-solo">
+            <img class="rmode-img" src="images/select/rock-select.png" alt=""/>Singleplayer
+          </button>
+          <button class="rmode-btn" data-mode="clash-pvp">
+            <img class="rmode-img" src="images/select/scissors-select.png" alt=""/>Multiplayer
+          </button>
+        </div>
+        <!-- Solo $CLASH -->
+        <div class="rmode-panel active" id="clash-solo">
+          <div class="reward-header">
+            <div class="reward-header-moves">
+              <img src="images/left/rock-left.png"     alt="Rock"     class="reward-move-img"/>
+              <img src="images/left/paper-left.png"    alt="Paper"    class="reward-move-img"/>
+              <img src="images/left/scissors-left.png" alt="Scissors" class="reward-move-img"/>
+            </div>
+            <div class="reward-header-meta">
+              <span class="badge b-blue">Singleplayer</span>
+              <span class="reward-header-title">$CLASH Rewards</span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Outcome</th><th>Amount</th></tr></thead>
+              <tbody>
+                <tr><td class="td-hi">Win (standard)</td><td class="reward-hi">2 &ndash; 4</td></tr>
+                <tr><td class="td-hi">Win &mdash; no losses, &ge;1 draw &nbsp;<span class="reward-star">&#11088;</span></td><td class="reward-hi">4 &ndash; 10</td></tr>
+                <tr><td class="td-hi">Win &mdash; perfect, no losses, no draws &nbsp;<span class="reward-trophy">&#127942;</span></td><td class="reward-hi" style="color:var(--accent2)">10 &ndash; 15</td></tr>
+                <tr><td>Lose</td><td class="reward-hi">1</td></tr>
+                <tr><td>Draw</td><td class="reward-hi">1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- PvP $CLASH -->
+        <div class="rmode-panel" id="clash-pvp">
+          <div class="reward-header">
+            <div class="reward-header-moves">
+              <img src="images/right/rock-right.png"     alt="Rock"     class="reward-move-img"/>
+              <img src="images/right/paper-right.png"    alt="Paper"    class="reward-move-img"/>
+              <img src="images/right/scissors-right.png" alt="Scissors" class="reward-move-img"/>
+            </div>
+            <div class="reward-header-meta">
+              <span class="badge b-purple">Multiplayer</span>
+              <span class="reward-header-title">$CLASH Rewards</span>
+            </div>
+          </div>
+          <p class="reward-sub-label">Base reward by rank</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Rank</th><th>Win</th><th>Lose</th><th>Draw</th></tr></thead>
+              <tbody>
+                <tr><td><span class="rank-cell bronze"><img class="rank-badge-sm" src="images/badges/bronze.png" alt=""/>Bronze</span></td><td class="reward-hi">5 &ndash; 10</td><td class="reward-hi">2 &ndash; 4</td><td class="reward-hi">1</td></tr>
+                <tr><td><span class="rank-cell silver"><img class="rank-badge-sm" src="images/badges/silver.png" alt=""/>Silver</span></td><td class="reward-hi">11 &ndash; 20</td><td class="reward-hi">2 &ndash; 4</td><td class="reward-hi">2</td></tr>
+                <tr><td><span class="rank-cell gold"><img class="rank-badge-sm" src="images/badges/gold.png" alt=""/>Gold</span></td><td class="reward-hi">21 &ndash; 30</td><td class="reward-hi">5 &ndash; 7</td><td class="reward-hi">3</td></tr>
+                <tr><td><span class="rank-cell platinum"><img class="rank-badge-sm" src="images/badges/platinum.png" alt=""/>Platinum</span></td><td class="reward-hi">31 &ndash; 50</td><td class="reward-hi">8 &ndash; 10</td><td class="reward-hi">4</td></tr>
+                <tr><td><span class="rank-cell diamond"><img class="rank-badge-sm" src="images/badges/diamond.png" alt=""/>Diamond</span></td><td class="reward-hi">51 &ndash; 70</td><td class="reward-hi">11 &ndash; 15</td><td class="reward-hi">5</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="reward-sub-label">Bonus (stacks on top of base)</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Bonus</th><th>Condition</th><th>Amount</th></tr></thead>
+              <tbody>
+                <tr><td class="td-hi"><span class="reward-star">&#11088;</span> Undefeated</td><td>Win + no lost rounds + &ge;1 draw</td><td class="reward-hi">+1 &ndash; 15</td></tr>
+                <tr><td class="td-hi"><span class="reward-trophy">&#127942;</span> Flawless Victory</td><td>Win + no lost rounds + no draws</td><td class="reward-hi" style="color:var(--accent2)">+15 &ndash; 25</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="hint-box warning">
+            <span class="hint-icon">&#9678;</span>
+            <div>
+              <div class="hint-title">Flawless Victory bonus</div>
+              <p>Bonuses stack on top of the base rank reward, making perfect play significantly more lucrative at higher ranks.</p>
+            </div>
+          </div>
+        </div>
+      </div><!-- /#rpanel-clash -->
+      <!-- ══ PANEL: BATTLE POINTS ══ -->
+      <div class="rtab-panel" id="rpanel-bp" role="tabpanel" aria-labelledby="rtab-bp">
+        <div class="rmode-toggle">
+          <button class="rmode-btn active" data-mode="bp-solo">
+            <img class="rmode-img" src="images/select/rock-select.png" alt=""/>Singleplayer
+          </button>
+          <button class="rmode-btn" data-mode="bp-pvp">
+            <img class="rmode-img" src="images/select/scissors-select.png" alt=""/>Multiplayer
+          </button>
+        </div>
+        <!-- Solo BP -->
+        <div class="rmode-panel active" id="bp-solo">
+          <div class="reward-header">
+            <div class="reward-header-moves">
+              <img src="images/battlepass/tier1.png" alt="Tier 1" class="reward-bp-img"/>
+              <img src="images/battlepass/tier2.png" alt="Tier 2" class="reward-bp-img"/>
+            </div>
+            <div class="reward-header-meta">
+              <span class="badge b-blue">Singleplayer</span>
+              <span class="reward-header-title">Battle Points &mdash; rank-based</span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Rank</th><th>Win</th><th>Draw</th><th>Lose</th></tr></thead>
+              <tbody>
+                <tr><td><span class="rank-cell bronze"><img class="rank-badge-sm" src="images/badges/bronze.png" alt=""/>Bronze</span></td><td class="reward-hi">5 &ndash; 10</td><td class="reward-hi">1</td><td class="reward-hi">2 &ndash; 4</td></tr>
+                <tr><td><span class="rank-cell silver"><img class="rank-badge-sm" src="images/badges/silver.png" alt=""/>Silver</span></td><td class="reward-hi">11 &ndash; 20</td><td class="reward-hi">2</td><td class="reward-hi">5 &ndash; 8</td></tr>
+                <tr><td><span class="rank-cell gold"><img class="rank-badge-sm" src="images/badges/gold.png" alt=""/>Gold</span></td><td class="reward-hi">21 &ndash; 30</td><td class="reward-hi">4</td><td class="reward-hi">10 &ndash; 15</td></tr>
+                <tr><td><span class="rank-cell platinum"><img class="rank-badge-sm" src="images/badges/platinum.png" alt=""/>Platinum</span></td><td class="reward-hi">31 &ndash; 50</td><td class="reward-hi">7</td><td class="reward-hi">16 &ndash; 25</td></tr>
+                <tr><td><span class="rank-cell diamond"><img class="rank-badge-sm" src="images/badges/diamond.png" alt=""/>Diamond</span></td><td class="reward-hi">51 &ndash; 100</td><td class="reward-hi">10</td><td class="reward-hi">30 &ndash; 35</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- PvP BP -->
+        <div class="rmode-panel" id="bp-pvp">
+          <div class="reward-header">
+            <div class="reward-header-moves">
+              <img src="images/battlepass/tier1.png" alt="Tier 1" class="reward-bp-img"/>
+              <img src="images/battlepass/tier2.png" alt="Tier 2" class="reward-bp-img"/>
+            </div>
+            <div class="reward-header-meta">
+              <span class="badge b-purple">Multiplayer</span>
+              <span class="reward-header-title">Battle Points &mdash; level-based</span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Rank</th><th>Level</th><th>Win</th><th>Draw</th><th>Lose</th></tr></thead>
+              <tbody>
+                <tr><td><span class="rank-cell bronze"><img class="rank-badge-sm" src="images/badges/bronze.png" alt=""/>Bronze</span></td><td class="reward-hi">0 &ndash; 10</td><td class="reward-hi">30 &ndash; 50</td><td class="reward-hi">15 &ndash; 25</td><td class="reward-hi">5 &ndash; 15</td></tr>
+                <tr><td><span class="rank-cell silver"><img class="rank-badge-sm" src="images/badges/silver.png" alt=""/>Silver</span></td><td class="reward-hi">11 &ndash; 30</td><td class="reward-hi">50 &ndash; 70</td><td class="reward-hi">25 &ndash; 40</td><td class="reward-hi">10 &ndash; 20</td></tr>
+                <tr><td><span class="rank-cell gold"><img class="rank-badge-sm" src="images/badges/gold.png" alt=""/>Gold</span></td><td class="reward-hi">31 &ndash; 50</td><td class="reward-hi">70 &ndash; 120</td><td class="reward-hi">40 &ndash; 60</td><td class="reward-hi">20 &ndash; 35</td></tr>
+                <tr><td><span class="rank-cell platinum"><img class="rank-badge-sm" src="images/badges/platinum.png" alt=""/>Platinum</span></td><td class="reward-hi">51 &ndash; 80</td><td class="reward-hi">120 &ndash; 170</td><td class="reward-hi">60 &ndash; 90</td><td class="reward-hi">35 &ndash; 50</td></tr>
+                <tr><td><span class="rank-cell diamond"><img class="rank-badge-sm" src="images/badges/diamond.png" alt=""/>Diamond</span></td><td class="reward-hi">81+</td><td class="reward-hi">170 &ndash; 250</td><td class="reward-hi">90 &ndash; 130</td><td class="reward-hi">50 &ndash; 80</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div><!-- /#rpanel-bp -->
+
+      <!-- ══ PANEL: EXP ══ -->
+      <div class="rtab-panel" id="rpanel-exp" role="tabpanel" aria-labelledby="rtab-exp">
+        <div class="rmode-toggle">
+          <button class="rmode-btn active" data-mode="exp-solo">
+            <img class="rmode-img" src="images/select/rock-select.png" alt=""/>Singleplayer
+          </button>
+          <button class="rmode-btn" data-mode="exp-pvp">
+            <img class="rmode-img" src="images/select/scissors-select.png" alt=""/>Multiplayer
+          </button>
+        </div>
+        <!-- Solo EXP -->
+        <div class="rmode-panel active" id="exp-solo">
+          <div class="reward-header">
+            <div class="reward-header-moves">
+              <img src="images/exp.png" alt="EXP" class="reward-exp-img"/>
+            </div>
+            <div class="reward-header-meta">
+              <span class="badge b-blue">Singleplayer</span>
+              <span class="reward-header-title">EXP &mdash; flat for all ranks</span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Outcome</th><th>EXP</th></tr></thead>
+              <tbody>
+                <tr><td class="td-hi">Win</td><td class="reward-hi">10 &ndash; 20</td></tr>
+                <tr><td class="td-hi">Draw</td><td class="reward-hi">1 &ndash; 5</td></tr>
+                <tr><td>Lose</td><td class="reward-hi">2 &ndash; 10</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- PvP EXP -->
+        <div class="rmode-panel" id="exp-pvp">
+          <div class="reward-header">
+            <div class="reward-header-moves">
+              <img src="images/exp.png" alt="EXP" class="reward-exp-img"/>
+            </div>
+            <div class="reward-header-meta">
+              <span class="badge b-purple">Multiplayer</span>
+              <span class="reward-header-title">EXP &mdash; flat for all ranks</span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Outcome</th><th>EXP</th></tr></thead>
+              <tbody>
+                <tr><td class="td-hi">Win</td><td class="reward-hi">20 &ndash; 40</td></tr>
+                <tr><td class="td-hi">Draw</td><td class="reward-hi">5 &ndash; 10</td></tr>
+                <tr><td>Lose</td><td class="reward-hi">1 &ndash; 15</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="hint-box info">
+          <span class="hint-icon">&#8505;</span>
+          <div>
+            <div class="hint-title">EXP is rank-independent</div>
+            <p>EXP ranges are flat for all players regardless of rank or level. Both singleplayer and multiplayer EXP follow the same fixed ranges across the board.</p>
+          </div>
+        </div>
+      </div><!-- /#rpanel-exp -->
+
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         NFT & PICKS
+    ════════════════════════════════════════════════════════ -->
+    <section id="nft">
+      <h2>NFT &amp; picks</h2>
+      <p>Arena picks are NFTs on the Solana blockchain. Each pick comes loaded with <strong>20 attempts</strong> &mdash; your fuel for entering arena matches. Singleplayer costs 1 attempt per match; multiplayer costs 2.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon ci-blue">&#9312;</div>
+            <h3>Singleplayer</h3>
+          </div>
+          <p style="font-size:13px">Uses <strong>1 attempt</strong> per match. 20 attempts per pick = 20 singleplayer matches.</p>
+        </div>
+        <div class="card" style="border-color:rgba(153,69,255,.3)">
+          <div class="card-top">
+            <div class="card-icon ci-purple">&#9313;</div>
+            <h3>Multiplayer</h3>
+          </div>
+          <p style="font-size:13px">Uses <strong>2 attempts</strong> per match. 20 attempts per pick = 10 multiplayer matches.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:28px">Arena pick packs</h3>
+      <div class="bp-tiers picks-tiers">
+        <div class="bp-tier-card picks-card">
+          <div class="picks-img-wrap">
+            <img src="images/select/rock-select.png" alt="Rock" class="picks-move-img"/>
+          </div>
+          <div class="bp-tier-body">
+            <div class="picks-badge b-blue">Starter</div>
+            <h3>5 Picks</h3>
+            <p>100 total attempts. Perfect for new players getting started in the arena.</p>
+            <div class="picks-meta"><span class="picks-value">Best for: beginners</span></div>
+          </div>
+        </div>
+        <div class="bp-tier-card picks-card">
+          <div class="picks-img-wrap picks-img-wrap--mid">
+            <img src="images/select/paper-select.png" alt="Paper" class="picks-move-img"/>
+          </div>
+          <div class="bp-tier-body">
+            <div class="picks-badge b-purple">Standard</div>
+            <h3>20 Picks</h3>
+            <p>400 total attempts. A solid supply with improved value per pick over the starter pack.</p>
+            <div class="picks-meta"><span class="picks-value">Best for: regular players</span></div>
+          </div>
+        </div>
+        <div class="bp-tier-card picks-card">
+          <div class="picks-img-wrap picks-img-wrap--pro">
+            <img src="images/select/scissors-select.png" alt="Scissors" class="picks-move-img"/>
+          </div>
+          <div class="bp-tier-body">
+            <div class="picks-badge b-green">Pro</div>
+            <h3>50 Picks</h3>
+            <p>1,000 total attempts. Lowest cost per pick and priority queue access included.</p>
+            <div class="picks-meta"><span class="picks-value">Best for: competitive players</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint-box info">
+        <span class="hint-icon">&#8505;</span>
+        <div>
+          <div class="hint-title">Picks never expire</div>
+          <p>Unused picks and remaining attempts stay in your account indefinitely. No time pressure &mdash; stock up when it suits you.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:28px">Battlepass</h3>
+      <p>The Battlepass is a seasonal NFT that boosts your battle points earnings across all match types, accelerating your climb up the leaderboard.</p>
+      <div class="bp-tiers">
+        <div class="bp-tier-card">
+          <img class="bp-tier-img" src="images/battlepass/tier1.png" alt="Battlepass tier 1"/>
+          <div class="bp-tier-body">
+            <h3>Tier 1 &mdash; Standard</h3>
+            <div class="bp-attempts-badge">10 attempts bonus</div>
+            <p>Earn battle points in every singleplayer and multiplayer match. Grants a <strong>+10% BP bonus</strong> on all match types to accelerate your climb up the seasonal leaderboard.</p>
+          </div>
+        </div>
+        <div class="bp-tier-card">
+          <img class="bp-tier-img" src="images/battlepass/tier2.png" alt="Battlepass tier 2"/>
+          <div class="bp-tier-body">
+            <h3>Tier 2 &mdash; Premium</h3>
+            <div class="bp-attempts-badge bp-attempts-badge--gold">20 attempts bonus</div>
+            <p>Full seasonal track with a <strong>+25% BP bonus</strong> on all match types and priority matchmaking. Maximum competitive edge for players targeting the top of the leaderboard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         MARKETPLACE
+    ════════════════════════════════════════════════════════ -->
+    <section id="marketplace">
+      <h2>Marketplace &amp; economy</h2>
+      <p>The SOL Clash marketplace is the platform's in-game economy hub. Players spend $CLASH or SOL to acquire arena picks and progression upgrades. Every item is designed so no purchase provides a gameplay advantage &mdash; skill remains the only path to more $CLASH.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon ci-gold" style="margin-bottom:10px">&#9673;</div>
+          <h3>Arena picks</h3>
+          <p>Entry tokens required for premium matches. Available in packs &mdash; larger packs offer better value per pick.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon ci-purple" style="margin-bottom:10px">
+            <img src="images/badges/bp.png" alt="Battle points" style="width:20px;height:20px;object-fit:contain"/>
+          </div>
+          <h3>Battle points</h3>
+          <p>Earned in every match across singleplayer and multiplayer. Battle points fuel the seasonal leaderboard &mdash; the top 15 players at season end share a <strong>10,000 $CLASH</strong> prize pool.</p>
+        </div>
+      </div>
+
+      <!-- ── ARENA PICKS ──────────────────────────────────── -->
+      <h3>Arena pick packs</h3>
+      <div class="bp-tiers picks-tiers">
+        <div class="bp-tier-card picks-card">
+          <div class="picks-img-wrap">
+            <img src="images/select/rock-select.png" alt="Rock" class="picks-move-img"/>
+          </div>
+          <div class="bp-tier-body">
+            <div class="picks-badge b-blue">Starter</div>
+            <h3>5 Picks</h3>
+            <p>Perfect for new players. Grants access to 5 premium arena matches at the lowest cost per pick.</p>
+            <div class="picks-meta">
+              <span class="picks-value">Best for: beginners</span>
+            </div>
+          </div>
+        </div>
+        <div class="bp-tier-card picks-card">
+          <div class="picks-img-wrap picks-img-wrap--mid">
+            <img src="images/select/paper-select.png" alt="Paper" class="picks-move-img"/>
+          </div>
+          <div class="bp-tier-body">
+            <div class="picks-badge b-purple">Standard</div>
+            <h3>20 Picks</h3>
+            <p>The most popular pack. A solid supply of picks with improved value per entry over the starter pack.</p>
+            <div class="picks-meta">
+              <span class="picks-value">Best for: regular players</span>
+            </div>
+          </div>
+        </div>
+        <div class="bp-tier-card picks-card">
+          <div class="picks-img-wrap picks-img-wrap--pro">
+            <img src="images/select/scissors-select.png" alt="Scissors" class="picks-move-img"/>
+          </div>
+          <div class="bp-tier-body">
+            <div class="picks-badge b-green">Pro</div>
+            <h3>50 Picks</h3>
+            <p>Maximum value pack for competitive grinders. Lowest cost per pick and priority queue access included.</p>
+            <div class="picks-meta">
+              <span class="picks-value">Best for: competitive players</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint-box info">
+        <span class="hint-icon">&#8505;</span>
+        <div>
+          <div class="hint-title">Picks never expire</div>
+          <p>Unused picks remain in your account indefinitely. There is no time pressure to use them &mdash; stock up when it suits you.</p>
+        </div>
+      </div>
+
+      <!-- ── BATTLEPASS TIERS ──────────────────────────── -->
+      <h3>Battlepass tiers</h3>
+      <div class="bp-tiers">
+        <div class="bp-tier-card">
+          <img class="bp-tier-img" src="images/battlepass/tier1.png" alt="Battlepass tier 1"/>
+          <div class="bp-tier-body">
+            <h3>Tier 1 &mdash; Standard</h3>
+            <p>Earn battle points in every singleplayer and multiplayer match. Grants a <strong>+10% BP bonus</strong> on all match types to accelerate your climb up the seasonal leaderboard.</p>
+          </div>
+        </div>
+        <div class="bp-tier-card">
+          <img class="bp-tier-img" src="images/battlepass/tier2.png" alt="Battlepass tier 2"/>
+          <div class="bp-tier-body">
+            <h3>Tier 2 &mdash; Premium</h3>
+            <p>Full seasonal track with a <strong>+25% BP bonus</strong> on all match types and priority matchmaking. Maximum competitive edge for players targeting the top of the leaderboard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         LEADERBOARD
+    ════════════════════════════════════════════════════════ -->
+    <section id="leaderboard">
+      <h2>Seasonal leaderboard</h2>
+      <p>Battle points earned across singleplayer and multiplayer matches determine your standing on the seasonal leaderboard. At the end of every season, the <strong>top 15 players</strong> split a prize pool of at least <strong>10,000 $CLASH</strong>.</p>
+
+      <div class="hint-box purple">
+        <span class="hint-icon">&#9672;</span>
+        <div>
+          <div class="hint-title">Growing prize pool</div>
+          <p>The prize pool grows throughout the season. Every marketplace transaction and every $CLASH &rarr; SOL swap contributes a portion directly into the season prize pool &mdash; the more the platform is used, the bigger the payout.</p>
+        </div>
+      </div>
+
+      <h3>Prize distribution</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Place</th><th>Share</th><th>Example (10,000 $CLASH pool)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-hi">&#127941; 1st place</td>
+              <td class="reward-hi" style="color:var(--gold)">40%</td>
+              <td class="reward-hi">4,000 $CLASH</td>
+            </tr>
+            <tr>
+              <td class="td-hi">&#129352; 2nd place</td>
+              <td class="reward-hi" style="color:#c0c8d8">25%</td>
+              <td class="reward-hi">2,500 $CLASH</td>
+            </tr>
+            <tr>
+              <td class="td-hi">&#129353; 3rd place</td>
+              <td class="reward-hi" style="color:#cd7f32">15%</td>
+              <td class="reward-hi">1,500 $CLASH</td>
+            </tr>
+            <tr>
+              <td>4th &ndash; 15th place</td>
+              <td class="reward-hi">20% shared equally</td>
+              <td class="reward-hi">&asymp; 167 $CLASH each</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hint-box info">
+        <span class="hint-icon">&#8505;</span>
+        <div>
+          <div class="hint-title">How to climb</div>
+          <p>Earn battle points in every match. Battlepass holders receive a +10% (Tier 1) or +25% (Tier 2) BP bonus on all match types, giving them a compounding edge over the course of a season.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         FAIR PLAY
+    ════════════════════════════════════════════════════════ -->
+    <section id="fairplay">
+      <h2>Fair play &amp; anti-abuse</h2>
+      <p>SOL Clash takes competitive integrity seriously. The reward system includes multiple safeguards to ensure that $CLASH distribution reflects genuine player skill &mdash; not exploit loops or automated farming.</p>
+
+      <!-- AFK illustration -->
+      <div class="afk-banner">
+        <img class="afk-img" src="images/afk.png" alt="AFK / idle player"/>
+        <div class="afk-text">
+          <h3>AFK &amp; idle detection</h3>
+          <p>Players who go idle mid-match are automatically flagged. Matches completed suspiciously fast are withheld from reward distribution pending review.</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Rule</th><th>Details</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-hi">Cooldown between same-pair matches</td>
+              <td>30-second wait before the same two players can be matched again in PvP</td>
+            </tr>
+            <tr>
+              <td class="td-hi">Diminishing returns</td>
+              <td>After 3 matches vs the same opponent within 1 hour, each additional match yields 50% of normal rewards</td>
+            </tr>
+            <tr>
+              <td class="td-hi">Suspicious match detection</td>
+              <td>Matches completed in under 5 seconds are flagged and withheld from reward distribution pending review</td>
+            </tr>
+            <tr>
+              <td class="td-hi">Repeat-match flagging</td>
+              <td>5 or more matches against the same opponent in 1 hour triggers an automatic abuse flag for manual review</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hint-box info">
+        <span class="hint-icon">&#8505;</span>
+        <div>
+          <p>These rules apply equally to all players regardless of rank or account age. No manual overrides exist for individual accounts.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         WALLET
+    ════════════════════════════════════════════════════════ -->
+    <section id="wallet">
+      <h2>Your wallet</h2>
+      <p>Every SOL Clash account includes a built-in Solana wallet &mdash; no external browser extension or third-party app required. Your wallet is generated automatically at signup and is permanently tied to your account.</p>
+
+      <div class="card-grid" style="grid-template-columns:1fr">
+        <div class="card">
+          <h3>Self-custody</h3>
+          <p>Your wallet is generated from a 12-word recovery phrase that only you can access. SOL Clash never stores your recovery phrase in plain text &mdash; it is encrypted before ever touching our systems. You own your funds.</p>
+        </div>
+        <div class="card">
+          <h3>SOL withdrawals</h3>
+          <p>Withdrawals to any external Solana address are available at any time. A secondary security PIN is required before any outbound transfer is processed, adding a layer of protection against unauthorized withdrawals.</p>
+        </div>
+        <div class="card">
+          <h3>$CLASH balance</h3>
+          <p>Your $CLASH balance is visible on your dashboard and updates in real time after every match. Balances are stored on-chain and reflect your true earning history across all game modes.</p>
+        </div>
+      </div>
+
+      <div class="hint-box success">
+        <span class="hint-icon">&#9723;</span>
+        <div>
+          <div class="hint-title">No crypto experience needed</div>
+          <p>SOL Clash handles all blockchain complexity behind the scenes. You interact with a standard gaming interface &mdash; the Solana wallet powers everything invisibly in the background.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         ROADMAP
+    ════════════════════════════════════════════════════════ -->
+    <section id="roadmap">
+      <h2>Roadmap</h2>
+      <p>SOL Clash has a clear phased development path. Core gameplay is live and battle-tested. Future phases focus on decentralization, token launch, and ecosystem expansion.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num done">&#10003;</div>
+          <div class="step-body">
+            <h3>Phase 1 &mdash; Foundation <span class="badge b-green" style="margin-left:6px">Complete</span></h3>
+            <p>Player authentication, wallet generation, arena system, $CLASH reward engine, picks system, leaderboard, and rank progression.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num done">&#10003;</div>
+          <div class="step-body">
+            <h3>Phase 2 &mdash; Arena &amp; Economy <span class="badge b-green" style="margin-left:6px">Complete</span></h3>
+            <p>Solo and PvP arenas, real-time multiplayer matchmaking, marketplace, battle points, inventory, anti-abuse engine, and admin tools.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num active">&#8594;</div>
+          <div class="step-body">
+            <h3>Phase 3 &mdash; Mainnet Launch <span class="badge b-purple" style="margin-left:6px">In progress</span></h3>
+            <p>Transition from testnet to Solana Mainnet, on-chain match verification, third-party security audit, and public token deployment.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">&#9675;</div>
+          <div class="step-body">
+            <h3>Phase 4 &mdash; Token Ecosystem <span class="badge b-gray" style="margin-left:6px">Planned</span></h3>
+            <p>$CLASH SPL token public launch, DEX liquidity, staking mechanism, token-gated features, and community governance voting.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">&#9675;</div>
+          <div class="step-body">
+            <h3>Phase 5 &mdash; Expansion <span class="badge b-gray" style="margin-left:6px">Planned</span></h3>
+            <p>Mobile apps, tournament brackets, guild system, cross-platform leaderboards, and third-party developer SDK.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         DISCLAIMER
+    ════════════════════════════════════════════════════════ -->
+    <section id="disclaimer">
+      <h2>Disclaimer</h2>
+      <p>This whitepaper is provided for informational purposes only and describes the current and planned state of the SOL Clash platform. It does not constitute financial advice, an investment prospectus, or a solicitation of any kind.</p>
+
+      <div class="hint-box warning">
+        <span class="hint-icon">&#9678;</span>
+        <div>
+          <div class="hint-title">Not a gambling platform</div>
+          <p>SOL Clash match outcomes are determined entirely by player performance in a skill-based arena system. No element of chance or random outcome determines $CLASH distribution.</p>
+        </div>
+      </div>
+
+      <div class="hint-box warning">
+        <span class="hint-icon">&#9678;</span>
+        <div>
+          <div class="hint-title">Regulatory notice</div>
+          <p>The legal status of blockchain utility tokens varies by jurisdiction. Players are solely responsible for understanding and complying with the laws applicable in their country of residence. SOL Clash does not offer services in jurisdictions where doing so would be prohibited.</p>
+        </div>
+      </div>
+
+      <div class="hint-box warning">
+        <span class="hint-icon">&#9678;</span>
+        <div>
+          <div class="hint-title">Risk disclosure</div>
+          <p>Blockchain assets carry inherent risks including network volatility, smart contract vulnerabilities, and regulatory changes. Never commit funds you cannot afford to lose. SOL Clash features described in this document are subject to change prior to mainnet launch.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         CONTACTS
+    ════════════════════════════════════════════════════════ -->
+    <section id="contacts">
+      <h2>Contacts &amp; community</h2>
+      <p>Find SOL Clash across the web. All official links are listed below &mdash; bookmark them and join the community.</p>
+
+      <div class="contacts-group">
+        <div class="contacts-group-label">Official</div>
+        <div class="contacts-grid">
+
+          <a class="contact-card" href="https://sol-clash.xyz" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="contact-body">
+              <div class="contact-title">Website</div>
+              <div class="contact-url">sol-clash.xyz</div>
+            </div>
+            <div class="contact-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
+            </div>
+          </a>
+
+          <a class="contact-card" href="https://whitepaper.sol-clash.xyz" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="contact-body">
+              <div class="contact-title">Whitepaper</div>
+              <div class="contact-url">whitepaper.sol-clash.xyz</div>
+            </div>
+            <div class="contact-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
+            </div>
+          </a>
+
+          <a class="contact-card" href="https://giveaway.sol-clash.xyz" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+            </div>
+            <div class="contact-body">
+              <div class="contact-title">Giveaway Events</div>
+              <div class="contact-url">giveaway.sol-clash.xyz</div>
+            </div>
+            <div class="contact-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="contacts-group">
+        <div class="contacts-group-label">Community</div>
+        <div class="contacts-grid">
+
+          <a class="contact-card contact-discord" href="https://discord.sol-clash.xyz" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            </div>
+            <div class="contact-body">
+              <div class="contact-title">Discord</div>
+              <div class="contact-url">discord.sol-clash.xyz</div>
+            </div>
+            <div class="contact-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
+            </div>
+          </a>
+
+          <a class="contact-card contact-telegram" href="https://telegram.sol-clash.xyz" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+            </div>
+            <div class="contact-body">
+              <div class="contact-title">Telegram</div>
+              <div class="contact-url">telegram.sol-clash.xyz</div>
+            </div>
+            <div class="contact-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
+            </div>
+          </a>
+
+          <a class="contact-card contact-facebook" href="https://fb.sol-clash.xyz" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+            </div>
+            <div class="contact-body">
+              <div class="contact-title">Facebook</div>
+              <div class="contact-url">fb.sol-clash.xyz</div>
+            </div>
+            <div class="contact-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
+            </div>
+          </a>
+
+          <a class="contact-card contact-twitter" href="https://x.sol-clash.xyz" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <div class="contact-body">
+              <div class="contact-title">Twitter / X</div>
+              <div class="contact-url">x.sol-clash.xyz</div>
+            </div>
+            <div class="contact-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+    <!-- FOOTER -->
+    <div class="page-footer">
+      SOL Clash Whitepaper v1.0 &middot; Published June 2026 &middot; Subject to revision without notice.
+    </div>
+
+  </div><!-- /.page -->
+</div><!-- /.main -->
+
+<script>
+(function () {
+  var sidebar   = document.getElementById('sidebar');
+  var overlay   = document.getElementById('overlay');
+  var hamburger = document.getElementById('hamburger');
+  var pageEl    = document.getElementById('page-content');
+
+  /* ── Sidebar order — defines prev/next sequence ────────────── */
+  var PAGE_ORDER = [
+    'intro','vision','how-to-play','singleplayer','multiplayer','ranks',
+    'token','rewards','nft','marketplace','leaderboard',
+    'fairplay','wallet','roadmap','disclaimer','contacts'
+  ];
+
+  /* ── Label map for prev/next titles ───────────────────────── */
+  var PAGE_LABELS = {
+    'intro':        'Introduction',
+    'vision':       'Vision & mission',
+    'how-to-play':  'How to play',
+    'singleplayer': 'Singleplayer arena',
+    'multiplayer':  'Multiplayer arena',
+    'ranks':        'Rank system',
+    'token':        '$CLASH token',
+    'rewards':      'Reward structure',
+    'nft':          'NFT & picks',
+    'marketplace':  'Marketplace',
+    'leaderboard':  'Leaderboard',
+    'fairplay':     'Fair play',
+    'wallet':       'Your wallet',
+    'roadmap':      'Roadmap',
+    'disclaimer':   'Disclaimer',
+    'contacts':     'Contacts'
+  };
+
+  /* ── Breadcrumb map ────────────────────────────────────────── */
+  var BREADCRUMB = document.querySelector('.breadcrumb span:last-child');
+
+  /* ── Mobile sidebar ─────────────────────────────────────────── */
+  function openSidebar() {
+    sidebar.classList.add('open');
+    overlay.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', function () {
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+  });
+  overlay.addEventListener('click', closeSidebar);
+
+  /* ── Show a section by id ───────────────────────────────────── */
+  function showPage(id) {
+    var sections = document.querySelectorAll('.page > section');
+    var navItems = document.querySelectorAll('.nav-item[href]');
+    var target   = document.getElementById(id);
+
+    if (!target) return;
+
+    /* Hide all, show target */
+    sections.forEach(function (s) { s.classList.remove('page-active'); });
+    target.classList.add('page-active');
+
+    /* Scroll content area to top */
+    pageEl.scrollTop = 0;
+
+    /* Active nav */
+    navItems.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+    });
+
+    /* Breadcrumb */
+    if (BREADCRUMB) BREADCRUMB.textContent = PAGE_LABELS[id] || id;
+
+    /* Update page title */
+    document.title = 'SOL Clash — ' + (PAGE_LABELS[id] || id);
+
+    /* Build / update prev-next inside the active section */
+    buildPrevNext(id, target);
+  }
+
+  /* ── Build prev/next nav inside section ────────────────────── */
+  function buildPrevNext(id, section) {
+    /* Remove any existing injected pnav */
+    var old = section.querySelector('.pnav-injected');
+    if (old) old.remove();
+
+    var idx  = PAGE_ORDER.indexOf(id);
+    var prev = idx > 0 ? PAGE_ORDER[idx - 1] : null;
+    var next = idx < PAGE_ORDER.length - 1 ? PAGE_ORDER[idx + 1] : null;
+
+    if (!prev && !next) return;
+
+    var nav = document.createElement('div');
+    nav.className = 'page-nav pnav-injected';
+
+    if (prev) {
+      nav.innerHTML += '<a class="pnav-btn pnav-prev" href="#' + prev + '">' +
+        '<span class="pnav-label">\u2190 PREVIOUS</span>' +
+        '<span class="pnav-title">' + PAGE_LABELS[prev] + '</span>' +
+        '</a>';
+    } else {
+      nav.innerHTML += '<div class="pnav-spacer"></div>';
+    }
+
+    if (next) {
+      nav.innerHTML += '<a class="pnav-btn pnav-next" href="#' + next + '">' +
+        '<span class="pnav-label">NEXT \u2192</span>' +
+        '<span class="pnav-title">' + PAGE_LABELS[next] + '</span>' +
+        '</a>';
+    } else {
+      nav.innerHTML += '<div class="pnav-spacer"></div>';
+    }
+
+    section.appendChild(nav);
+
+    /* Wire clicks inside the newly created nav */
+    nav.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', handleNavClick);
+    });
+  }
+
+  /* ── Handle any #hash link click ──────────────────────────── */
+  function handleNavClick(e) {
+    var href = this.getAttribute('href');
+    if (!href || href.charAt(0) !== '#') return;
+    e.preventDefault();
+    var id = href.slice(1);
+    history.pushState(null, '', href);
+    showPage(id);
+    if (window.innerWidth <= 720) closeSidebar();
+  }
+
+  /* Wire all nav-item links */
+  document.querySelectorAll('.nav-item[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', handleNavClick);
+  });
+
+  /* Handle browser back/forward */
+  window.addEventListener('popstate', function () {
+    var id = (location.hash || '#intro').slice(1);
+    showPage(id);
+  });
+
+  /* ── Reward tabs ───────────────────────────────────────── */
+  (function () {
+    var tabBtns   = document.querySelectorAll('.rtab-btn');
+    var tabPanels = document.querySelectorAll('.rtab-panel');
+
+    tabBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = 'rpanel-' + btn.dataset.tab;
+        tabBtns.forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        tabPanels.forEach(function (p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.rmode-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var panel  = btn.closest('.rtab-panel');
+        var modeId = btn.dataset.mode;
+        panel.querySelectorAll('.rmode-btn').forEach(function (b) { b.classList.remove('active'); });
+        panel.querySelectorAll('.rmode-panel').forEach(function (p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        document.getElementById(modeId).classList.add('active');
+      });
+    });
+  })();
+
+  /* ── Initial load ──────────────────────────────────────────── */
+  var initId = (location.hash || '#intro').slice(1);
+  if (!document.getElementById(initId)) initId = 'intro';
+  showPage(initId);
+})();
+</script>
+</body>
+</html>
