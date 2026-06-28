@@ -1,1481 +1,1602 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SOL Clash — Whitepaper</title>
-  <link rel="icon" href="images/favicon.ico"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOL Clash – Whitepaper v1.0</title>
+  <meta name="description" content="Official SOL Clash Whitepaper – Competitive Flappy Bird play-to-earn on Solana." />
+  <link rel="icon" href="images/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/whitepaper.css" />
 </head>
 <body>
 
-<!-- ── SIDEBAR OVERLAY ──────────────────────────────────────── -->
-<div class="sidebar-overlay" id="overlay"></div>
-
-<!-- ── SIDEBAR ──────────────────────────────────────────────── -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-logo">
-    <img class="logo-img" src="images/logo.png" alt="SOL Clash logo"/>
-    <div>
-      <div class="logo-text">SOL Clash</div>
-      <div class="logo-sub">Whitepaper</div>
-    </div>
-  </div>
-
-  <div class="sidebar-version">
-    <span class="ver-badge">v1.0 &middot; June 2026</span>
-  </div>
-
-  <nav class="sidebar-nav" id="sidebar-nav">
-    <div class="nav-group">
-      <div class="nav-group-label">Getting started</div>
-      <a class="nav-item active" href="#intro">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2" fill="currentColor" stroke="none"/></svg></span>
-        Introduction
-      </a>
-      <a class="nav-item" href="#vision">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3C4.5 3 2 8 2 8s2.5 5 6 5 6-5 6-5-2.5-5-6-5z"/><circle cx="8" cy="8" r="2"/></svg></span>
-        Vision &amp; mission
-      </a>
-    </div>
-    <div class="nav-group">
-      <div class="nav-group-label">The game</div>
-      <a class="nav-item" href="#how-to-play">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3,2 13,8 3,14"/></svg></span>
-        How to play
-      </a>
-      <a class="nav-item sub" href="#singleplayer">
-        <span class="ni sub-dot"></span>Singleplayer arena
-      </a>
-      <a class="nav-item sub" href="#multiplayer">
-        <span class="ni sub-dot"></span>Multiplayer arena
-      </a>
-      <a class="nav-item" href="#ranks">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l1.8 3.6L14 6.3l-3 2.9.7 4.1L8 11.1l-3.7 2.2.7-4.1-3-2.9 4.2-.7z"/></svg></span>
-        Rank system
-      </a>
-    </div>
-    <div class="nav-group">
-      <div class="nav-group-label">Economy</div>
-      <a class="nav-item" href="#token">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M6 6.5h3a1.5 1.5 0 0 1 0 3H6"/></svg></span>
-        $CLASH token
-      </a>
-      <a class="nav-item" href="#rewards">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l1.4 4.2H14l-3.7 2.7 1.4 4.3L8 10.5l-3.7 2.7 1.4-4.3L2 6.2h4.6z"/></svg></span>
-        Reward structure
-      </a>
-      <a class="nav-item" href="#nft">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg></span>
-        NFT &amp; picks
-      </a>
-      <a class="nav-item" href="#marketplace">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12l-1.5 6H3.5L2 4z"/><circle cx="5.5" cy="13" r="1"/><circle cx="10.5" cy="13" r="1"/><path d="M2 2h1.5l.5 2"/></svg></span>
-        Marketplace
-      </a>
-      <a class="nav-item" href="#leaderboard">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="9" width="4" height="6" rx="1"/><rect x="6" y="5" width="4" height="10" rx="1"/><rect x="11" y="2" width="4" height="13" rx="1"/></svg></span>
-        Leaderboard
-      </a>
-    </div>
-    <div class="nav-group">
-      <div class="nav-group-label">Platform</div>
-      <a class="nav-item" href="#fairplay">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l5 2v4c0 3-2.5 5.5-5 6-2.5-.5-5-3-5-6V4z"/><path d="M5.5 8l2 2 3-3"/></svg></span>
-        Fair play
-      </a>
-      <a class="nav-item" href="#wallet">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="9" rx="1.5"/><path d="M2 7h12"/><circle cx="11" cy="10" r="1" fill="currentColor" stroke="none"/></svg></span>
-        Your wallet
-      </a>
-      <a class="nav-item" href="#roadmap">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h10M9 5l3 3-3 3"/></svg></span>
-        Roadmap
-      </a>
-      <a class="nav-item" href="#disclaimer">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v4"/><circle cx="8" cy="5" r=".5" fill="currentColor" stroke="none"/></svg></span>
-        Disclaimer
-      </a>
-      <a class="nav-item" href="#contacts">
-        <span class="ni"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12v9H2z" rx="1"/><path d="M2 4l6 5 6-5"/></svg></span>
-        Contacts
-      </a>
-    </div>
-  </nav>
-</aside>
-
-<!-- ── MAIN ─────────────────────────────────────────────────── -->
-<div class="main" id="main">
-
-  <!-- TOP BAR -->
-  <div class="topbar">
-    <div class="topbar-left">
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="breadcrumb">
-        SOL Clash <span class="sep">/</span> <span>Whitepaper</span>
+<!-- ═══════════════════ TOP BAR ═══════════════════ -->
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="index.html" class="topbar-logo">
+      <img src="images/logo.png" alt="SOL Clash" />
+      <div>
+        <span class="topbar-logo-name">SOL Clash</span>
+        <span class="topbar-logo-sub">Whitepaper</span>
       </div>
-    </div>
-    <div class="topbar-actions">
-      <button class="tb-btn">Last updated: Jun 2026</button>
-      <button class="tb-btn primary">v1.0</button>
-    </div>
+    </a>
   </div>
+  <div class="topbar-center">
+    <span>SOL Clash</span>
+    <span class="bc-sep">/</span>
+    <span class="bc-cur" id="bcCurrent">Introduction</span>
+  </div>
+  <div class="topbar-right">
+    <span class="topbar-updated">Last updated: Jun 2026</span>
+    <span class="topbar-version">v1.0</span>
+    <button class="topbar-hamburger" id="topbarHamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-  <div class="page" id="page-content">
+<!-- ═══════════════════ LAYOUT ═══════════════════ -->
+<div class="layout">
 
-    <!-- ════════════════════════════════════════════════════════
-         INTRO
-    ════════════════════════════════════════════════════════ -->
-    <section id="intro">
-      <div class="page-badge">Play-to-Earn &middot; Solana</div>
-      <h1>SOL Clash Whitepaper</h1>
-      <p class="page-intro">
-        SOL Clash is a competitive play-to-earn gaming platform built on the Solana blockchain.
-        Players battle in real-time Rock &mdash; Paper &mdash; Scissors arenas, earn <strong>$CLASH</strong> tokens
-        through skill-based performance, and spend them in a living in-game economy &mdash; all without ever leaving the platform.
+  <!-- ─── Sidebar ─── -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-badge"><span class="dot"></span>v1.0 &nbsp;·&nbsp; June 2026</div>
+    <div id="sidebarNav"></div>
+  </nav>
+
+  <!-- ─── Main ─── -->
+  <main class="main">
+
+    <!-- ══════════════════════════════════
+         Introduction
+    ══════════════════════════════════ -->
+    <section class="wp-section active" id="page-introduction">
+      <div class="page-tags">
+        <span class="ptag">Play-to-Earn</span>
+        <span class="ptag green">Solana</span>
+      </div>
+      <h1 class="page-title">SOL Clash Whitepaper</h1>
+      <p class="page-lead">
+        SOL Clash is a competitive Flappy Bird game built on the <strong>Solana</strong> blockchain.
+        Players flap through pipe arenas, collect <strong>$GOLD</strong> tokens and Seeds during gameplay,
+        climb the leaderboard, and build a hatchery of Nests that generate passive Eggs — all from a
+        browser, with zero crypto setup required.
       </p>
 
-      <div class="stat-strip">
-        <div class="stat-cell">
-          <div class="stat-n purple">$CLASH</div>
-          <div class="stat-l">Native reward token</div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-box-value purple">$GOLD</div>
+          <div class="stat-box-label">In-game reward token</div>
         </div>
-        <div class="stat-cell">
-          <div class="stat-n green">Solana</div>
-          <div class="stat-l">Blockchain network</div>
+        <div class="stat-box">
+          <div class="stat-box-value green">Solana</div>
+          <div class="stat-box-label">Blockchain network</div>
         </div>
-        <div class="stat-cell">
-          <div class="stat-n gold">1v1 + Solo</div>
-          <div class="stat-l">Arena formats</div>
+        <div class="stat-box">
+          <div class="stat-box-value">4 Nests</div>
+          <div class="stat-box-label">Free → Legendary</div>
         </div>
-        <div class="stat-cell">
-          <div class="stat-n white">5 Tiers</div>
-          <div class="stat-l">Rank progression</div>
-        </div>
-      </div>
-
-      <h2>What is SOL Clash?</h2>
-      <p>SOL Clash is built on one idea: <strong>your skill should have real value</strong>. It is a browser-based arena game where every match is a competitive Rock &mdash; Paper &mdash; Scissors battle. Win cleanly, earn more. Lose, you still earn something. Every outcome is recorded on-chain and every reward is distributed automatically &mdash; no middleman, no manual payouts.</p>
-      <p>The platform is designed to be accessible to anyone. You do not need a crypto wallet, a browser extension, or any prior blockchain experience. Sign in with Google, GitHub, or Discord and you are ready to play in under a minute. Your Solana wallet is created for you automatically in the background.</p>
-
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-green">&#9650;</div>
-            <h3 style="color:var(--accent2)">Earn by playing</h3>
-          </div>
-          <p style="font-size:13px">Every match &mdash; win, draw, or lose &mdash; distributes $CLASH, Battle Points, and EXP. Better performance means better rewards. Skill is the only variable.</p>
-        </div>
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-purple">&#9670;</div>
-            <h3>Rank up &amp; compete</h3>
-          </div>
-          <p style="font-size:13px">Progress through 5 rank tiers from Bronze to Diamond. Higher ranks unlock better rewards and put you in contention for the seasonal leaderboard prize pool.</p>
-        </div>
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-blue">&#8862;</div>
-            <h3>Own your assets</h3>
-          </div>
-          <p style="font-size:13px">Arena picks are NFTs on Solana. Your $CLASH balance lives on-chain. Everything you earn is yours &mdash; withdraw to any Solana wallet at any time.</p>
-        </div>
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-gold">&#127942;</div>
-            <h3>Seasonal prizes</h3>
-          </div>
-          <p style="font-size:13px">The top 15 players on the seasonal leaderboard share a prize pool of at least 10,000 $CLASH. The pool grows with every marketplace transaction and $CLASH swap.</p>
+        <div class="stat-box">
+          <div class="stat-box-value">5 Ranks</div>
+          <div class="stat-box-label">Bronze → Diamond</div>
         </div>
       </div>
 
-      <div class="hint-box purple">
-        <span class="hint-icon">&#9672;</span>
-        <div>
-          <div class="hint-title">Core principle</div>
-          <p>SOL Clash rewards skill, not luck. Every $CLASH token distributed is tied to a verified match outcome &mdash; not a random drop or pay-to-win mechanic.</p>
+      <hr class="wp-hr" />
+
+      <h2 class="wp-h2">What is SOL Clash?</h2>
+      <p class="wp-p">
+        SOL Clash is a browser-based competitive game where every run through the Flappy Bird pipe arena
+        earns you real in-game rewards. <strong>No wallet extension needed.</strong> Sign in with Google,
+        GitHub, or Discord, and a Solana custodial wallet is created for you instantly. You can be playing
+        and earning within 60 seconds of first visiting the site.
+      </p>
+      <p class="wp-p">
+        The game has two modes: <strong>Free to Play</strong> (practice, no cost, no rewards) and
+        <strong>Competitive</strong> (costs 1 Energy per run, earns $GOLD, Seeds, Battle Points, and EXP).
+        Rewards are bigger with better Nests and higher player rank.
+      </p>
+
+      <h2 class="wp-h2">Core pillars</h2>
+      <div class="cards-grid">
+        <div class="wp-card">
+          <div class="wp-card-icon">🎮</div>
+          <h4>Skill-based earnings</h4>
+          <p>Higher scores = more $GOLD and BP per run. Your performance dictates your income.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════════════════
-         VISION & MISSION
-    ════════════════════════════════════════════════════════ -->
-    <section id="vision">
-      <h2>Vision &amp; mission</h2>
-      <p class="page-intro">We believe the future of gaming is player-owned. SOL Clash exists to make that real.</p>
-
-      <h3>The problem</h3>
-      <p>In traditional gaming, players invest hundreds of hours, build real skills, and generate enormous value &mdash; but own nothing. Items live on centralized servers. Accounts can be banned. Earnings disappear when a game shuts down. The value flows one way: from the player to the platform.</p>
-
-      <div class="hint-box warning">
-        <span class="hint-icon">&#9678;</span>
-        <div>
-          <div class="hint-title">The status quo</div>
-          <p>Millions of competitive game players earn nothing for their time and skill. In-game economies are controlled entirely by the developer, and player assets have no real-world value or portability.</p>
+        <div class="wp-card">
+          <img src="images/solana.png" class="wp-card-img" alt="Solana" />
+          <h4>On-chain rewards</h4>
+          <p>$GOLD swaps to real SOL via an on-chain store-wallet transaction. Every payout verifiable.</p>
         </div>
-      </div>
-
-      <h3>Our solution</h3>
-      <p>SOL Clash flips the model. Every win, every token, every item you earn is yours &mdash; on-chain, verifiable, and transferable. The game does not gatekeep your earnings. There are no withdrawal fees hidden in fine print. The rules of the economy are written in this document and enforced by code.</p>
-
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-green">&#10003;</div>
-            <h3 style="color:var(--accent2)">Transparent economy</h3>
-          </div>
-          <p style="font-size:13px">Every reward formula, every distribution rule, every fee is documented here and applied uniformly. No hidden mechanics, no surprise changes without notice.</p>
+        <div class="wp-card">
+          <div class="wp-card-icon">🚀</div>
+          <h4>Zero friction</h4>
+          <p>OAuth login, instant wallet generation, no browser extension. Play in under 60 seconds.</p>
         </div>
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-purple">&#9670;</div>
-            <h3>Skill-first design</h3>
-          </div>
-          <p style="font-size:13px">Rewards scale with performance. A perfect win pays more than a standard win. A flawless PvP victory pays more than a close one. Grinding without skill does not pay as well as playing well.</p>
-        </div>
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-blue">&#9723;</div>
-            <h3>True ownership</h3>
-          </div>
-          <p style="font-size:13px">Your wallet, your tokens, your NFTs. SOL Clash never holds your funds. Everything is on Solana. You can withdraw, trade, or transfer at any time without permission from the platform.</p>
+        <div class="wp-card">
+          <img src="images/egg.png" class="wp-card-img" alt="Egg" />
+          <h4>Passive Hatchery</h4>
+          <p>Place upgraded Nests in the Hatchery to generate Eggs passively over time — no gameplay required.</p>
         </div>
       </div>
 
-      <h3>Our mission</h3>
-      <p>To build a transparent, skill-rewarding arena where the best players are genuinely compensated, and where the in-game economy is governed by fair rules that everyone can read, verify, and trust. SOL Clash is not just a game &mdash; it is a proof of concept that competitive gaming and real financial ownership can coexist.</p>
-
-      <div class="hint-box success">
-        <span class="hint-icon">&#10022;</span>
-        <div>
-          <div class="hint-title">Long-term commitment</div>
-          <p>SOL Clash is built to grow. Phases 3, 4, and 5 on the roadmap introduce on-chain verification, a public $CLASH token launch, and ecosystem expansion &mdash; each step increasing transparency and player ownership.</p>
-        </div>
-      </div>
-    </section>
-    <!-- ════════════════════════════════════════════════════════
-         HOW TO PLAY
-    ════════════════════════════════════════════════════════ -->
-    <section id="how-to-play">
-      <h2>How to play</h2>
-      <p>SOL Clash is accessible to anyone with a Google, GitHub, or Discord account. No crypto knowledge is required to start &mdash; your Solana wallet is created automatically when you register. Getting started takes under a minute.</p>
-
-      <div class="steps">
-
-        <div class="step">
-          <div class="step-num done">01</div>
-          <div class="step-body">
-            <h3>Create your account</h3>
-            <p>Sign up instantly using your existing Google, GitHub, or Discord account. A non-custodial Solana wallet is generated for you automatically &mdash; no extensions or seed phrases required to start playing.</p>
-            <!-- Auth provider buttons -->
-            <div class="auth-buttons">
-              <div class="auth-btn auth-google">
-                <img class="auth-provider-img" src="images/google.jpg" alt="Google"/>
-                <span>Continue with Google</span>
-              </div>
-              <div class="auth-btn auth-github">
-                <svg class="auth-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
-                </svg>
-                <span>Continue with GitHub</span>
-              </div>
-              <div class="auth-btn auth-discord">
-                <svg class="auth-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-                </svg>
-                <span>Continue with Discord</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num done">02</div>
-          <div class="step-body">
-            <h3>Get your arena picks</h3>
-            <p>Purchase picks from the marketplace &mdash; these are your entry tokens for premium arena matches. Pick packs are available in various sizes at tiered pricing.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num active">03</div>
-          <div class="step-body">
-            <h3>Enter the arena</h3>
-            <p>Choose Solo Arena for single-player practice and base rewards, or PvP Arena for real-time 1v1 matches against other players with higher reward ceilings.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">04</div>
-          <div class="step-body">
-            <h3>Win and earn $CLASH</h3>
-            <p>Rewards are automatically distributed after each match. The better your performance &mdash; and the cleaner your win &mdash; the more $CLASH you receive.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">05</div>
-          <div class="step-body">
-            <h3>Spend, trade, or hold</h3>
-            <p>Use $CLASH to buy marketplace items, upgrade your battle points, or hold for future value as the platform grows. SOL withdrawals are always available.</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════════════════
-         SINGLEPLAYER ARENA
-    ════════════════════════════════════════════════════════ -->
-    <section id="singleplayer">
-      <h2>Singleplayer arena</h2>
-      <p>Compete at your own pace against the game system. No opponents to wait for &mdash; perfect for grinding experience, practicing strategies, and earning steady baseline $CLASH rewards.</p>
-
-      <div class="hint-box info">
-        <span class="hint-icon">&#8505;</span>
-        <div>
-          <div class="hint-title">Attempt cost</div>
-          <p>Each singleplayer match consumes <strong>1 attempt</strong> from your active pick. Each pick NFT comes loaded with <strong>20 attempts</strong>.</p>
-        </div>
-      </div>
-
-      <p style="font-size:13px;color:var(--hint);margin-bottom:6px;text-transform:uppercase;letter-spacing:.07em;font-weight:600">Choose your move</p>
-      <div class="move-select-strip">
-        <div class="move-select-item">
-          <img class="move-select-img" src="images/select/rock-select.png" alt="Rock"/>
-          <span class="move-select-label">Rock</span>
-        </div>
-        <div class="move-select-item">
-          <img class="move-select-img" src="images/select/paper-select.png" alt="Paper"/>
-          <span class="move-select-label">Paper</span>
-        </div>
-        <div class="move-select-item">
-          <img class="move-select-img" src="images/select/scissors-select.png" alt="Scissors"/>
-          <span class="move-select-label">Scissors</span>
-        </div>
-      </div>
-
-      <p style="font-size:13px;color:var(--hint);margin-bottom:6px;text-transform:uppercase;letter-spacing:.07em;font-weight:600">Live match</p>
-      <div class="arena-showcase">
-        <div class="arena-side left">
-          <img class="arena-move-img" src="images/left/rock-left.png" alt="Player — Rock"/>
-          <span class="arena-move-label">You</span>
-        </div>
-        <div class="arena-vs">VS</div>
-        <div class="arena-side right">
-          <img class="arena-move-img" src="images/right/scissors-right.png" alt="System — Scissors"/>
-          <span class="arena-move-label">System</span>
-        </div>
-      </div>
-
-      <div class="card-grid" style="margin-top:24px">
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-green">&#9650;</div>
-            <h3 style="color:var(--accent2)">Rewards</h3>
-          </div>
-          <p style="font-size:13px">Win standard &middot; Win no-loss &middot; Win perfect &middot; Draw &middot; Lose &mdash; all earn $CLASH, BP, and EXP.</p>
-        </div>
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-blue">&#9201;</div>
-            <h3>Attempt usage</h3>
-          </div>
-          <p style="font-size:13px">1 attempt per match. Each pick NFT holds 20 attempts. When attempts run out, activate a new pick from your inventory.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════════════════
-         MULTIPLAYER ARENA
-    ════════════════════════════════════════════════════════ -->
-    <section id="multiplayer">
-      <h2>Multiplayer arena</h2>
-      <p>Face real players in live 1v1 matches. Matchmaking pairs you with an available opponent automatically. Higher skill ceiling means significantly higher $CLASH rewards per match.</p>
-
-      <div class="hint-box warning">
-        <span class="hint-icon">&#9678;</span>
-        <div>
-          <div class="hint-title">Attempt cost</div>
-          <p>Each multiplayer match consumes <strong>2 attempts</strong> from your active pick. Higher cost reflects the higher reward potential of PvP matches.</p>
-        </div>
-      </div>
-
-      <p style="font-size:13px;color:var(--hint);margin-bottom:6px;text-transform:uppercase;letter-spacing:.07em;font-weight:600">Live PvP match</p>
-      <div class="arena-showcase">
-        <div class="arena-side left">
-          <img class="arena-move-img" src="images/left/rock-left.png" alt="Player — Rock"/>
-          <span class="arena-move-label">You</span>
-        </div>
-        <div class="arena-vs">VS</div>
-        <div class="arena-side right">
-          <img class="arena-move-img" src="images/right/scissors-right.png" alt="Opponent — Scissors"/>
-          <span class="arena-move-label">Opponent</span>
-        </div>
-      </div>
-
-      <div class="card-grid" style="margin-top:24px">
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-purple">&#9876;</div>
-            <h3>Matchmaking</h3>
-          </div>
-          <p style="font-size:13px">Real-time pairing connects players as they enter the queue. A built-in cooldown prevents the same two players from being matched repeatedly in a short window.</p>
-        </div>
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-gold">&#127942;</div>
-            <h3>Higher rewards</h3>
-          </div>
-          <p style="font-size:13px">PvP rewards scale with rank and include Flawless Victory bonuses. Winning cleanly against real opponents pays significantly more than singleplayer.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════════════════
-         RANKS
-    ════════════════════════════════════════════════════════ -->
-    <section id="ranks">
-      <h2>Rank system</h2>
-      <p>Every player starts at Bronze and advances by earning experience through match participation. Higher ranks unlock exclusive marketplace content and signal competitive standing on the global leaderboard.</p>
-
-      <div class="table-wrap">
-        <!-- Header row -->
-        <div style="background:var(--surface);border-bottom:1px solid var(--border)">
-          <div class="tier-row" style="border-bottom:none;padding-bottom:8px">
-            <div style="font-size:10.5px;color:var(--hint);font-weight:600;letter-spacing:.07em;text-transform:uppercase">Badge</div>
-            <div style="font-size:10.5px;color:var(--hint);font-weight:600;letter-spacing:.07em;text-transform:uppercase">Rank</div>
-            <div style="font-size:10.5px;color:var(--hint);font-weight:600;letter-spacing:.07em;text-transform:uppercase">Level range</div>
-          </div>
-        </div>
-        <!-- Bronze -->
-        <div class="tier-row">
-          <img class="tier-badge-img" src="images/badges/bronze.png" alt="Bronze badge"/>
-          <div>
-            <div class="tier-name">Bronze</div>
-            <div class="tier-perk">Every journey begins.</div>
-          </div>
-          <div class="tier-range">Lv 1 &ndash; 10</div>
-        </div>
-        <!-- Silver -->
-        <div class="tier-row">
-          <img class="tier-badge-img" src="images/badges/silver.png" alt="Silver badge"/>
-          <div>
-            <div class="tier-name">Silver</div>
-            <div class="tier-perk">Building momentum.</div>
-          </div>
-          <div class="tier-range">Lv 11 &ndash; 30</div>
-        </div>
-        <!-- Gold -->
-        <div class="tier-row">
-          <img class="tier-badge-img" src="images/badges/gold.png" alt="Gold badge"/>
-          <div>
-            <div class="tier-name">Gold</div>
-            <div class="tier-perk">Shining with achievement.</div>
-          </div>
-          <div class="tier-range">Lv 31 &ndash; 50</div>
-        </div>
-        <!-- Platinum -->
-        <div class="tier-row">
-          <img class="tier-badge-img" src="images/badges/platinum.png" alt="Platinum badge"/>
-          <div>
-            <div class="tier-name">Platinum</div>
-            <div class="tier-perk">Excellence unlocked.</div>
-          </div>
-          <div class="tier-range">Lv 51 &ndash; 80</div>
-        </div>
-        <!-- Diamond -->
-        <div class="tier-row">
-          <img class="tier-badge-img" src="images/badges/diamond.png" alt="Diamond badge"/>
-          <div>
-            <div class="tier-name">Diamond</div>
-            <div class="tier-perk">The pinnacle of success.</div>
-          </div>
-          <div class="tier-range">Lv 81+</div>
-        </div>
-      </div>
-
-      <p>Experience required per level scales progressively &mdash; earlier levels are faster to complete, encouraging new players to engage with the system before the curve steepens at higher tiers.</p>
-    </section>
-
-    <!-- ════════════════════════════════════════════════════════
-         TOKEN
-    ════════════════════════════════════════════════════════ -->
-    <section id="token">
-      <div class="section-hero-img">
-        <img src="images/clash.png" alt="$CLASH token"/>
-      </div>
-      <h2>The $CLASH token</h2>
-      <p>$CLASH is the native utility token of the SOL Clash ecosystem. It is earned exclusively through gameplay performance and spent within the platform. $CLASH is not purchasable with fiat &mdash; it must be won.</p>
-
-      <div class="hint-box success">
-        <span class="hint-icon">&#10022;</span>
-        <div>
-          <div class="hint-title">Earned, not bought</div>
-          <p>$CLASH cannot be purchased directly. Every token in circulation was won in a match, creating a supply that is always tied to real competitive activity.</p>
-        </div>
-      </div>
-
-      <h3>How $CLASH flows</h3>
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-green">&#9650;</div>
-            <h3 style="color:var(--accent2)">Token inflows</h3>
-          </div>
-          <p style="font-size:13px">Arena match wins &middot; Perfect match bonuses &middot; No-loss streak bonuses &middot; Battle points milestones &middot; Referral rewards</p>
-        </div>
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-blue">&#9660;</div>
-            <h3 style="color:#9aabff">Token outflows</h3>
-          </div>
-          <p style="font-size:13px">Arena picks &middot; Battle points upgrades &middot; Feature unlocks</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════════════════
-         REWARDS
-    ════════════════════════════════════════════════════════ -->
-    <section id="rewards">
-      <h2>Reward structure</h2>
-      <p>Every match credits rewards instantly. Select a category and mode below to explore the full breakdown.</p>
-
-      <!-- ── CATEGORY TABS ──────────────────────────────────── -->
-      <div class="rtab-bar" role="tablist" aria-label="Reward categories">
-        <button class="rtab-btn active" role="tab" aria-selected="true"
-                aria-controls="rpanel-clash" id="rtab-clash" data-tab="clash">
-          <img class="rtab-img" src="images/clash.png" alt="$CLASH"/>
-          <span class="rtab-label">$CLASH</span>
+      <div class="pagination">
+        <button class="pagination-btn pag-prev" disabled>
+          <div><span class="pag-label">← Previous</span><span class="pag-name"></span></div>
         </button>
-        <button class="rtab-btn" role="tab" aria-selected="false"
-                aria-controls="rpanel-bp" id="rtab-bp" data-tab="bp">
-          <img class="rtab-img" src="images/badges/bp.png" alt=""/>
-          <span class="rtab-label">Battle Points</span>
-        </button>
-        <button class="rtab-btn" role="tab" aria-selected="false"
-                aria-controls="rpanel-exp" id="rtab-exp" data-tab="exp">
-          <img class="rtab-img" src="images/exp.png" alt="EXP"/>
-          <span class="rtab-label">EXP</span>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Vision &amp; Mission</span></div>
         </button>
       </div>
-
-      <!-- ══ PANEL: $CLASH ══ -->
-      <div class="rtab-panel active" id="rpanel-clash" role="tabpanel" aria-labelledby="rtab-clash">
-        <div class="rmode-toggle">
-          <button class="rmode-btn active" data-mode="clash-solo">
-            <img class="rmode-img" src="images/select/rock-select.png" alt=""/>Singleplayer
-          </button>
-          <button class="rmode-btn" data-mode="clash-pvp">
-            <img class="rmode-img" src="images/select/scissors-select.png" alt=""/>Multiplayer
-          </button>
-        </div>
-        <!-- Solo $CLASH -->
-        <div class="rmode-panel active" id="clash-solo">
-          <div class="reward-header">
-            <div class="reward-header-moves">
-              <img src="images/left/rock-left.png"     alt="Rock"     class="reward-move-img"/>
-              <img src="images/left/paper-left.png"    alt="Paper"    class="reward-move-img"/>
-              <img src="images/left/scissors-left.png" alt="Scissors" class="reward-move-img"/>
-            </div>
-            <div class="reward-header-meta">
-              <span class="badge b-blue">Singleplayer</span>
-              <span class="reward-header-title">$CLASH Rewards</span>
-            </div>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Outcome</th><th>Amount</th></tr></thead>
-              <tbody>
-                <tr><td class="td-hi">Win (standard)</td><td class="reward-hi">2 &ndash; 4</td></tr>
-                <tr><td class="td-hi">Win &mdash; no losses, &ge;1 draw &nbsp;<span class="reward-star">&#11088;</span></td><td class="reward-hi">4 &ndash; 10</td></tr>
-                <tr><td class="td-hi">Win &mdash; perfect, no losses, no draws &nbsp;<span class="reward-trophy">&#127942;</span></td><td class="reward-hi" style="color:var(--accent2)">10 &ndash; 15</td></tr>
-                <tr><td>Lose</td><td class="reward-hi">1</td></tr>
-                <tr><td>Draw</td><td class="reward-hi">1</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <!-- PvP $CLASH -->
-        <div class="rmode-panel" id="clash-pvp">
-          <div class="reward-header">
-            <div class="reward-header-moves">
-              <img src="images/right/rock-right.png"     alt="Rock"     class="reward-move-img"/>
-              <img src="images/right/paper-right.png"    alt="Paper"    class="reward-move-img"/>
-              <img src="images/right/scissors-right.png" alt="Scissors" class="reward-move-img"/>
-            </div>
-            <div class="reward-header-meta">
-              <span class="badge b-purple">Multiplayer</span>
-              <span class="reward-header-title">$CLASH Rewards</span>
-            </div>
-          </div>
-          <p class="reward-sub-label">Base reward by rank</p>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Rank</th><th>Win</th><th>Lose</th><th>Draw</th></tr></thead>
-              <tbody>
-                <tr><td><span class="rank-cell bronze"><img class="rank-badge-sm" src="images/badges/bronze.png" alt=""/>Bronze</span></td><td class="reward-hi">5 &ndash; 10</td><td class="reward-hi">2 &ndash; 4</td><td class="reward-hi">1</td></tr>
-                <tr><td><span class="rank-cell silver"><img class="rank-badge-sm" src="images/badges/silver.png" alt=""/>Silver</span></td><td class="reward-hi">11 &ndash; 20</td><td class="reward-hi">2 &ndash; 4</td><td class="reward-hi">2</td></tr>
-                <tr><td><span class="rank-cell gold"><img class="rank-badge-sm" src="images/badges/gold.png" alt=""/>Gold</span></td><td class="reward-hi">21 &ndash; 30</td><td class="reward-hi">5 &ndash; 7</td><td class="reward-hi">3</td></tr>
-                <tr><td><span class="rank-cell platinum"><img class="rank-badge-sm" src="images/badges/platinum.png" alt=""/>Platinum</span></td><td class="reward-hi">31 &ndash; 50</td><td class="reward-hi">8 &ndash; 10</td><td class="reward-hi">4</td></tr>
-                <tr><td><span class="rank-cell diamond"><img class="rank-badge-sm" src="images/badges/diamond.png" alt=""/>Diamond</span></td><td class="reward-hi">51 &ndash; 70</td><td class="reward-hi">11 &ndash; 15</td><td class="reward-hi">5</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="reward-sub-label">Bonus (stacks on top of base)</p>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Bonus</th><th>Condition</th><th>Amount</th></tr></thead>
-              <tbody>
-                <tr><td class="td-hi"><span class="reward-star">&#11088;</span> Undefeated</td><td>Win + no lost rounds + &ge;1 draw</td><td class="reward-hi">+1 &ndash; 15</td></tr>
-                <tr><td class="td-hi"><span class="reward-trophy">&#127942;</span> Flawless Victory</td><td>Win + no lost rounds + no draws</td><td class="reward-hi" style="color:var(--accent2)">+15 &ndash; 25</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="hint-box warning">
-            <span class="hint-icon">&#9678;</span>
-            <div>
-              <div class="hint-title">Flawless Victory bonus</div>
-              <p>Bonuses stack on top of the base rank reward, making perfect play significantly more lucrative at higher ranks.</p>
-            </div>
-          </div>
-        </div>
-      </div><!-- /#rpanel-clash -->
-      <!-- ══ PANEL: BATTLE POINTS ══ -->
-      <div class="rtab-panel" id="rpanel-bp" role="tabpanel" aria-labelledby="rtab-bp">
-        <div class="rmode-toggle">
-          <button class="rmode-btn active" data-mode="bp-solo">
-            <img class="rmode-img" src="images/select/rock-select.png" alt=""/>Singleplayer
-          </button>
-          <button class="rmode-btn" data-mode="bp-pvp">
-            <img class="rmode-img" src="images/select/scissors-select.png" alt=""/>Multiplayer
-          </button>
-        </div>
-        <!-- Solo BP -->
-        <div class="rmode-panel active" id="bp-solo">
-          <div class="reward-header">
-            <div class="reward-header-moves">
-              <img src="images/battlepass/tier1.png" alt="Tier 1" class="reward-bp-img"/>
-              <img src="images/battlepass/tier2.png" alt="Tier 2" class="reward-bp-img"/>
-            </div>
-            <div class="reward-header-meta">
-              <span class="badge b-blue">Singleplayer</span>
-              <span class="reward-header-title">Battle Points &mdash; rank-based</span>
-            </div>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Rank</th><th>Win</th><th>Draw</th><th>Lose</th></tr></thead>
-              <tbody>
-                <tr><td><span class="rank-cell bronze"><img class="rank-badge-sm" src="images/badges/bronze.png" alt=""/>Bronze</span></td><td class="reward-hi">5 &ndash; 10</td><td class="reward-hi">1</td><td class="reward-hi">2 &ndash; 4</td></tr>
-                <tr><td><span class="rank-cell silver"><img class="rank-badge-sm" src="images/badges/silver.png" alt=""/>Silver</span></td><td class="reward-hi">11 &ndash; 20</td><td class="reward-hi">2</td><td class="reward-hi">5 &ndash; 8</td></tr>
-                <tr><td><span class="rank-cell gold"><img class="rank-badge-sm" src="images/badges/gold.png" alt=""/>Gold</span></td><td class="reward-hi">21 &ndash; 30</td><td class="reward-hi">4</td><td class="reward-hi">10 &ndash; 15</td></tr>
-                <tr><td><span class="rank-cell platinum"><img class="rank-badge-sm" src="images/badges/platinum.png" alt=""/>Platinum</span></td><td class="reward-hi">31 &ndash; 50</td><td class="reward-hi">7</td><td class="reward-hi">16 &ndash; 25</td></tr>
-                <tr><td><span class="rank-cell diamond"><img class="rank-badge-sm" src="images/badges/diamond.png" alt=""/>Diamond</span></td><td class="reward-hi">51 &ndash; 100</td><td class="reward-hi">10</td><td class="reward-hi">30 &ndash; 35</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <!-- PvP BP -->
-        <div class="rmode-panel" id="bp-pvp">
-          <div class="reward-header">
-            <div class="reward-header-moves">
-              <img src="images/battlepass/tier1.png" alt="Tier 1" class="reward-bp-img"/>
-              <img src="images/battlepass/tier2.png" alt="Tier 2" class="reward-bp-img"/>
-            </div>
-            <div class="reward-header-meta">
-              <span class="badge b-purple">Multiplayer</span>
-              <span class="reward-header-title">Battle Points &mdash; level-based</span>
-            </div>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Rank</th><th>Level</th><th>Win</th><th>Draw</th><th>Lose</th></tr></thead>
-              <tbody>
-                <tr><td><span class="rank-cell bronze"><img class="rank-badge-sm" src="images/badges/bronze.png" alt=""/>Bronze</span></td><td class="reward-hi">0 &ndash; 10</td><td class="reward-hi">30 &ndash; 50</td><td class="reward-hi">15 &ndash; 25</td><td class="reward-hi">5 &ndash; 15</td></tr>
-                <tr><td><span class="rank-cell silver"><img class="rank-badge-sm" src="images/badges/silver.png" alt=""/>Silver</span></td><td class="reward-hi">11 &ndash; 30</td><td class="reward-hi">50 &ndash; 70</td><td class="reward-hi">25 &ndash; 40</td><td class="reward-hi">10 &ndash; 20</td></tr>
-                <tr><td><span class="rank-cell gold"><img class="rank-badge-sm" src="images/badges/gold.png" alt=""/>Gold</span></td><td class="reward-hi">31 &ndash; 50</td><td class="reward-hi">70 &ndash; 120</td><td class="reward-hi">40 &ndash; 60</td><td class="reward-hi">20 &ndash; 35</td></tr>
-                <tr><td><span class="rank-cell platinum"><img class="rank-badge-sm" src="images/badges/platinum.png" alt=""/>Platinum</span></td><td class="reward-hi">51 &ndash; 80</td><td class="reward-hi">120 &ndash; 170</td><td class="reward-hi">60 &ndash; 90</td><td class="reward-hi">35 &ndash; 50</td></tr>
-                <tr><td><span class="rank-cell diamond"><img class="rank-badge-sm" src="images/badges/diamond.png" alt=""/>Diamond</span></td><td class="reward-hi">81+</td><td class="reward-hi">170 &ndash; 250</td><td class="reward-hi">90 &ndash; 130</td><td class="reward-hi">50 &ndash; 80</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div><!-- /#rpanel-bp -->
-
-      <!-- ══ PANEL: EXP ══ -->
-      <div class="rtab-panel" id="rpanel-exp" role="tabpanel" aria-labelledby="rtab-exp">
-        <div class="rmode-toggle">
-          <button class="rmode-btn active" data-mode="exp-solo">
-            <img class="rmode-img" src="images/select/rock-select.png" alt=""/>Singleplayer
-          </button>
-          <button class="rmode-btn" data-mode="exp-pvp">
-            <img class="rmode-img" src="images/select/scissors-select.png" alt=""/>Multiplayer
-          </button>
-        </div>
-        <!-- Solo EXP -->
-        <div class="rmode-panel active" id="exp-solo">
-          <div class="reward-header">
-            <div class="reward-header-moves">
-              <img src="images/exp.png" alt="EXP" class="reward-exp-img"/>
-            </div>
-            <div class="reward-header-meta">
-              <span class="badge b-blue">Singleplayer</span>
-              <span class="reward-header-title">EXP &mdash; flat for all ranks</span>
-            </div>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Outcome</th><th>EXP</th></tr></thead>
-              <tbody>
-                <tr><td class="td-hi">Win</td><td class="reward-hi">10 &ndash; 20</td></tr>
-                <tr><td class="td-hi">Draw</td><td class="reward-hi">1 &ndash; 5</td></tr>
-                <tr><td>Lose</td><td class="reward-hi">2 &ndash; 10</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <!-- PvP EXP -->
-        <div class="rmode-panel" id="exp-pvp">
-          <div class="reward-header">
-            <div class="reward-header-moves">
-              <img src="images/exp.png" alt="EXP" class="reward-exp-img"/>
-            </div>
-            <div class="reward-header-meta">
-              <span class="badge b-purple">Multiplayer</span>
-              <span class="reward-header-title">EXP &mdash; flat for all ranks</span>
-            </div>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Outcome</th><th>EXP</th></tr></thead>
-              <tbody>
-                <tr><td class="td-hi">Win</td><td class="reward-hi">20 &ndash; 40</td></tr>
-                <tr><td class="td-hi">Draw</td><td class="reward-hi">5 &ndash; 10</td></tr>
-                <tr><td>Lose</td><td class="reward-hi">1 &ndash; 15</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="hint-box info">
-          <span class="hint-icon">&#8505;</span>
-          <div>
-            <div class="hint-title">EXP is rank-independent</div>
-            <p>EXP ranges are flat for all players regardless of rank or level. Both singleplayer and multiplayer EXP follow the same fixed ranges across the board.</p>
-          </div>
-        </div>
-      </div><!-- /#rpanel-exp -->
-
     </section>
 
-    <!-- ════════════════════════════════════════════════════════
-         NFT & PICKS
-    ════════════════════════════════════════════════════════ -->
-    <section id="nft">
-      <h2>NFT &amp; picks</h2>
-      <p>Arena picks are NFTs on the Solana blockchain. Each pick comes loaded with <strong>20 attempts</strong> &mdash; your fuel for entering arena matches. Singleplayer costs 1 attempt per match; multiplayer costs 2.</p>
+    <!-- ══════════════════════════════════
+         Vision & Mission
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-vision">
+      <h1 class="page-title">Vision &amp; Mission</h1>
+      <p class="page-lead">
+        We are building a gaming platform where skill translates directly into economic value —
+        accessible to anyone, with no crypto knowledge required to get started.
+      </p>
 
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-top">
-            <div class="card-icon ci-blue">&#9312;</div>
-            <h3>Singleplayer</h3>
-          </div>
-          <p style="font-size:13px">Uses <strong>1 attempt</strong> per match. 20 attempts per pick = 20 singleplayer matches.</p>
+      <h2 class="wp-h2">Our Vision</h2>
+      <p class="wp-p">
+        A world where any player — regardless of geography, wealth, or blockchain experience —
+        can earn real value from their skill in a competitive game. SOL Clash proves the model
+        with Flappy Bird: a universally understood mechanic layered over a transparent on-chain economy.
+      </p>
+
+      <h2 class="wp-h2">Our Mission</h2>
+      <ul class="wp-ul">
+        <li><strong>Skill-first rewards</strong> — Better players earn more $GOLD and BP per run, consistently and on-chain.</li>
+        <li><strong>Zero friction onboarding</strong> — OAuth sign-in, automatic wallet creation, no browser extension ever required.</li>
+        <li><strong>Transparent economy</strong> — All Gold-to-SOL swaps and Nest purchases are real Solana transactions, verifiable on-chain.</li>
+        <li><strong>Sustainable tokenomics</strong> — $GOLD is earned in-game and spent on Nest purchases, upgrades, and marketplace items — it circulates, not inflates.</li>
+        <li><strong>Passive income layer</strong> — Players who invest in Nests and upgrade them can generate passive Eggs via the Hatchery without active gameplay.</li>
+      </ul>
+
+      <h2 class="wp-h2">The problem we solve</h2>
+      <div class="cards-grid">
+        <div class="wp-card">
+          <div class="wp-card-icon">❌</div>
+          <h4>Crypto complexity</h4>
+          <p>Most Web3 games need MetaMask, seed phrases, and gas fees before you can even start. SOL Clash removes all of that.</p>
         </div>
-        <div class="card" style="border-color:rgba(153,69,255,.3)">
-          <div class="card-top">
-            <div class="card-icon ci-purple">&#9313;</div>
-            <h3>Multiplayer</h3>
-          </div>
-          <p style="font-size:13px">Uses <strong>2 attempts</strong> per match. 20 attempts per pick = 10 multiplayer matches.</p>
+        <div class="wp-card">
+          <div class="wp-card-icon">❌</div>
+          <h4>Pay-to-win economies</h4>
+          <p>Many "play-to-earn" games reward spending, not skill. Whales dominate. SOL Clash rewards actual performance.</p>
+        </div>
+        <div class="wp-card">
+          <div class="wp-card-icon">✅</div>
+          <h4>SOL Clash</h4>
+          <p>Sign in with Google. Play immediately. Earn $GOLD based on your score. Swap to real SOL any time.</p>
         </div>
       </div>
 
-      <h3 style="margin-top:28px">Arena pick packs</h3>
-      <div class="bp-tiers picks-tiers">
-        <div class="bp-tier-card picks-card">
-          <div class="picks-img-wrap">
-            <img src="images/select/rock-select.png" alt="Rock" class="picks-move-img"/>
-          </div>
-          <div class="bp-tier-body">
-            <div class="picks-badge b-blue">Starter</div>
-            <h3>5 Picks</h3>
-            <p>100 total attempts. Perfect for new players getting started in the arena.</p>
-            <div class="picks-meta"><span class="picks-value">Best for: beginners</span></div>
-          </div>
-        </div>
-        <div class="bp-tier-card picks-card">
-          <div class="picks-img-wrap picks-img-wrap--mid">
-            <img src="images/select/paper-select.png" alt="Paper" class="picks-move-img"/>
-          </div>
-          <div class="bp-tier-body">
-            <div class="picks-badge b-purple">Standard</div>
-            <h3>20 Picks</h3>
-            <p>400 total attempts. A solid supply with improved value per pick over the starter pack.</p>
-            <div class="picks-meta"><span class="picks-value">Best for: regular players</span></div>
-          </div>
-        </div>
-        <div class="bp-tier-card picks-card">
-          <div class="picks-img-wrap picks-img-wrap--pro">
-            <img src="images/select/scissors-select.png" alt="Scissors" class="picks-move-img"/>
-          </div>
-          <div class="bp-tier-body">
-            <div class="picks-badge b-green">Pro</div>
-            <h3>50 Picks</h3>
-            <p>1,000 total attempts. Lowest cost per pick and priority queue access included.</p>
-            <div class="picks-meta"><span class="picks-value">Best for: competitive players</span></div>
-          </div>
-        </div>
+      <div class="callout green">
+        🌱 A first-time user can sign up, receive a free Nest, play a competitive game,
+        and earn their first $GOLD tokens — all within 2 minutes.
       </div>
 
-      <div class="hint-box info">
-        <span class="hint-icon">&#8505;</span>
-        <div>
-          <div class="hint-title">Picks never expire</div>
-          <p>Unused picks and remaining attempts stay in your account indefinitely. No time pressure &mdash; stock up when it suits you.</p>
-        </div>
-      </div>
-
-      <h3 style="margin-top:28px">Battlepass</h3>
-      <p>The Battlepass is a seasonal NFT that boosts your battle points earnings across all match types, accelerating your climb up the leaderboard.</p>
-      <div class="bp-tiers">
-        <div class="bp-tier-card">
-          <img class="bp-tier-img" src="images/battlepass/tier1.png" alt="Battlepass tier 1"/>
-          <div class="bp-tier-body">
-            <h3>Tier 1 &mdash; Standard</h3>
-            <div class="bp-attempts-badge">10 attempts bonus</div>
-            <p>Earn battle points in every singleplayer and multiplayer match. Grants a <strong>+10% BP bonus</strong> on all match types to accelerate your climb up the seasonal leaderboard.</p>
-          </div>
-        </div>
-        <div class="bp-tier-card">
-          <img class="bp-tier-img" src="images/battlepass/tier2.png" alt="Battlepass tier 2"/>
-          <div class="bp-tier-body">
-            <h3>Tier 2 &mdash; Premium</h3>
-            <div class="bp-attempts-badge bp-attempts-badge--gold">20 attempts bonus</div>
-            <p>Full seasonal track with a <strong>+25% BP bonus</strong> on all match types and priority matchmaking. Maximum competitive edge for players targeting the top of the leaderboard.</p>
-          </div>
-        </div>
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Introduction</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">How to play</span></div>
+        </button>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════
-         MARKETPLACE
-    ════════════════════════════════════════════════════════ -->
-    <section id="marketplace">
-      <h2>Marketplace &amp; economy</h2>
-      <p>The SOL Clash marketplace is the platform's in-game economy hub. Players spend $CLASH or SOL to acquire arena picks and progression upgrades. Every item is designed so no purchase provides a gameplay advantage &mdash; skill remains the only path to more $CLASH.</p>
+    <!-- ══════════════════════════════════
+         How to Play
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-how-to-play">
+      <div class="page-tags"><span class="ptag">The Game</span></div>
+      <h1 class="page-title">How to play</h1>
+      <p class="page-lead">
+        SOL Clash is Flappy Bird with a real economy. Tap or press Space to flap your bird upward,
+        navigate through pipe gaps, and collect $GOLD and Seed items along the way.
+        Every competitive run costs 1 Energy and earns you real rewards.
+      </p>
 
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-icon ci-gold" style="margin-bottom:10px">&#9673;</div>
-          <h3>Arena picks</h3>
-          <p>Entry tokens required for premium matches. Available in packs &mdash; larger packs offer better value per pick.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon ci-purple" style="margin-bottom:10px">
-            <img src="images/badges/bp.png" alt="Battle points" style="width:20px;height:20px;object-fit:contain"/>
-          </div>
-          <h3>Battle points</h3>
-          <p>Earned in every match across singleplayer and multiplayer. Battle points fuel the seasonal leaderboard &mdash; the top 15 players at season end share a <strong>10,000 $CLASH</strong> prize pool.</p>
-        </div>
+      <h2 class="wp-h2">Physics &amp; controls</h2>
+      <div class="wp-table-wrap">
+        <table class="wp-table">
+          <thead><tr><th>Constant</th><th>Value</th><th>Effect</th></tr></thead>
+          <tbody>
+            <tr><td>Gravity</td><td><code>0.44</code> / frame</td><td>Bird falls each frame</td></tr>
+            <tr><td>Flap power</td><td><code>−8.2</code> velocity</td><td>Upward impulse on tap/click/Space</td></tr>
+            <tr><td>Pipe speed</td><td><code>3 px</code> / frame</td><td>Pipes scroll left</td></tr>
+            <tr><td>Bird start height</td><td>40% of screen</td><td>Centered-left start position</td></tr>
+            <tr><td>Hitbox forgiveness</td><td>10 px margin</td><td>Forgiving collision on all sides</td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <!-- ── ARENA PICKS ──────────────────────────────────── -->
-      <h3>Arena pick packs</h3>
-      <div class="bp-tiers picks-tiers">
-        <div class="bp-tier-card picks-card">
-          <div class="picks-img-wrap">
-            <img src="images/select/rock-select.png" alt="Rock" class="picks-move-img"/>
-          </div>
-          <div class="bp-tier-body">
-            <div class="picks-badge b-blue">Starter</div>
-            <h3>5 Picks</h3>
-            <p>Perfect for new players. Grants access to 5 premium arena matches at the lowest cost per pick.</p>
-            <div class="picks-meta">
-              <span class="picks-value">Best for: beginners</span>
-            </div>
-          </div>
-        </div>
-        <div class="bp-tier-card picks-card">
-          <div class="picks-img-wrap picks-img-wrap--mid">
-            <img src="images/select/paper-select.png" alt="Paper" class="picks-move-img"/>
-          </div>
-          <div class="bp-tier-body">
-            <div class="picks-badge b-purple">Standard</div>
-            <h3>20 Picks</h3>
-            <p>The most popular pack. A solid supply of picks with improved value per entry over the starter pack.</p>
-            <div class="picks-meta">
-              <span class="picks-value">Best for: regular players</span>
-            </div>
-          </div>
-        </div>
-        <div class="bp-tier-card picks-card">
-          <div class="picks-img-wrap picks-img-wrap--pro">
-            <img src="images/select/scissors-select.png" alt="Scissors" class="picks-move-img"/>
-          </div>
-          <div class="bp-tier-body">
-            <div class="picks-badge b-green">Pro</div>
-            <h3>50 Picks</h3>
-            <p>Maximum value pack for competitive grinders. Lowest cost per pick and priority queue access included.</p>
-            <div class="picks-meta">
-              <span class="picks-value">Best for: competitive players</span>
-            </div>
-          </div>
-        </div>
+      <div class="wp-table-wrap">
+        <table class="wp-table">
+          <thead><tr><th>Input</th><th>Action</th><th>Platform</th></tr></thead>
+          <tbody>
+            <tr><td>Space / Enter</td><td>Flap bird upward</td><td>Desktop</td></tr>
+            <tr><td>Click / Tap</td><td>Flap bird upward</td><td>All</td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="hint-box info">
-        <span class="hint-icon">&#8505;</span>
-        <div>
-          <div class="hint-title">Picks never expire</div>
-          <p>Unused picks remain in your account indefinitely. There is no time pressure to use them &mdash; stock up when it suits you.</p>
-        </div>
-      </div>
+      <h2 class="wp-h2">Game states</h2>
+      <p class="wp-p">
+        Every run follows a fixed state machine:
+        <strong>Idle</strong> (waiting on start screen) →
+        <strong>Ready</strong> (bird floats, pipes frozen, waiting for first flap) →
+        <strong>Playing</strong> (active run) →
+        <strong>Dead</strong> (collision detected, game-over screen shown).
+      </p>
+      <p class="wp-p">
+        In the <strong>Ready</strong> state the bird oscillates with a sine-wave float
+        (<code>sin(frame × 0.06) × 8 px</code>). Pipes are invisible and frozen until
+        the first flap, giving you a moment to orient.
+      </p>
 
-      <!-- ── BATTLEPASS TIERS ──────────────────────────── -->
-      <h3>Battlepass tiers</h3>
-      <div class="bp-tiers">
-        <div class="bp-tier-card">
-          <img class="bp-tier-img" src="images/battlepass/tier1.png" alt="Battlepass tier 1"/>
-          <div class="bp-tier-body">
-            <h3>Tier 1 &mdash; Standard</h3>
-            <p>Earn battle points in every singleplayer and multiplayer match. Grants a <strong>+10% BP bonus</strong> on all match types to accelerate your climb up the seasonal leaderboard.</p>
-          </div>
-        </div>
-        <div class="bp-tier-card">
-          <img class="bp-tier-img" src="images/battlepass/tier2.png" alt="Battlepass tier 2"/>
-          <div class="bp-tier-body">
-            <h3>Tier 2 &mdash; Premium</h3>
-            <p>Full seasonal track with a <strong>+25% BP bonus</strong> on all match types and priority matchmaking. Maximum competitive edge for players targeting the top of the leaderboard.</p>
-          </div>
-        </div>
+      <h2 class="wp-h2">Pipe gaps (competitive)</h2>
+      <p class="wp-p">
+        Each pipe in Competitive mode has a <strong>randomly assigned gap size</strong> for added
+        difficulty variance. Gap center is also randomised between 25% and 72% of screen height.
+      </p>
+      <div class="wp-table-wrap">
+        <table class="wp-table">
+          <thead><tr><th>Gap type</th><th>Size (% screen height)</th><th>Probability</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge red">Tight</span></td><td>18%</td><td>20%</td></tr>
+            <tr><td><span class="badge blue">Normal</span></td><td>24%</td><td>35%</td></tr>
+            <tr><td><span class="badge green">Wide</span></td><td>32%</td><td>45%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="wp-p">Pipes spawn every <strong>180 frames</strong> in Competitive mode.</p>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Vision &amp; Mission</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Free to Play mode</span></div>
+        </button>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════
-         LEADERBOARD
-    ════════════════════════════════════════════════════════ -->
-    <section id="leaderboard">
-      <h2>Seasonal leaderboard</h2>
-      <p>Battle points earned across singleplayer and multiplayer matches determine your standing on the seasonal leaderboard. At the end of every season, the <strong>top 15 players</strong> split a prize pool of at least <strong>10,000 $CLASH</strong>.</p>
+    <!-- ══════════════════════════════════
+         Free to Play
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-freetoplay">
+      <div class="page-tags"><span class="ptag">The Game</span></div>
+      <h1 class="page-title">Free to Play mode</h1>
+      <p class="page-lead">
+        Practice mode lets anyone play the core game without spending Energy or earning rewards.
+        It is intentionally harder than Competitive mode — making it a genuine training ground.
+      </p>
 
-      <div class="hint-box purple">
-        <span class="hint-icon">&#9672;</span>
-        <div>
-          <div class="hint-title">Growing prize pool</div>
-          <p>The prize pool grows throughout the season. Every marketplace transaction and every $CLASH &rarr; SOL swap contributes a portion directly into the season prize pool &mdash; the more the platform is used, the bigger the payout.</p>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-box-value green">Free</div>
+          <div class="stat-box-label">No energy cost</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value">110 frames</div>
+          <div class="stat-box-label">Pipe spawn rate</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value">30%</div>
+          <div class="stat-box-label">Fixed gap size</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value purple">0</div>
+          <div class="stat-box-label">Rewards earned</div>
         </div>
       </div>
 
-      <h3>Prize distribution</h3>
-      <div class="table-wrap">
-        <table>
+      <h2 class="wp-h2">What Free to Play does NOT have</h2>
+      <ul class="wp-ul">
+        <li>No $GOLD or Seeds collected during the run</li>
+        <li>No EXP awarded after game over</li>
+        <li>No Battle Points (BP) earned</li>
+        <li>Scores are NOT saved and do NOT count toward the leaderboard</li>
+        <li>No energy gate — play as many times as you want</li>
+      </ul>
+
+      <h2 class="wp-h2">Difficulty difference</h2>
+      <p class="wp-p">
+        Free to Play spawns pipes every <strong>110 frames</strong> (vs 180 in Competitive).
+        Gaps are a fixed <strong>30% of screen height</strong> — no variation.
+        This gives a consistent but rapid-fire training experience.
+      </p>
+
+      <div class="callout">
+        💡 Use Free to Play to warm up, learn pipe patterns, and test bird control
+        before spending Energy on Competitive runs.
+      </div>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">How to play</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Competitive mode</span></div>
+        </button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         Competitive mode
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-competitive">
+      <div class="page-tags"><span class="ptag">The Game</span><span class="ptag green">Earns Rewards</span></div>
+      <h1 class="page-title">Competitive mode</h1>
+      <p class="page-lead">
+        Every Competitive run costs <strong>1 Energy</strong> and rewards you with $GOLD tokens,
+        Seeds, Battle Points, and EXP — all calculated server-side and credited automatically
+        when the game ends.
+      </p>
+
+      <h2 class="wp-h2">What happens in a competitive run</h2>
+      <ol class="wp-ol">
+        <li><strong>Energy check</strong> — Each competitive run costs 1 Energy. If your Energy is at zero, the Play button is disabled and a countdown to the next regen tick is shown.</li>
+        <li><strong>Collectibles spawn</strong> — <img src="images/gold.png" class="inline-img" alt="Gold" /><strong>$GOLD coins</strong> (500–1,000 $GOLD each) and <img src="images/seed.png" class="inline-img" alt="Seed" /><strong>Seeds</strong> appear in pipe gaps. Spawn rates are governed by the Nests you own.</li>
+        <li><strong>Score increments</strong> — Every pipe cleared = +1 point. Max 9,999 per run.</li>
+        <li><strong>Game ends</strong> — On collision the game tallies your score, collectibles, and run duration. Rewards are calculated and credited to your account automatically.</li>
+      </ol>
+
+      <h2 class="wp-h2">EXP &amp; leveling</h2>
+      <p class="wp-p">
+        EXP is awarded after every competitive run based on your score and how long the run lasted.
+        Longer, higher-scoring runs yield more EXP. You earn between <strong>1 and 10 EXP</strong>
+        per run depending on performance. Each level requires <strong>(level + 1) × 200 EXP</strong>
+        to complete. Leveling up is cosmetic — it reflects overall experience on the platform.
+      </p>
+
+      <h2 class="wp-h2">Game-over screen rewards</h2>
+      <p class="wp-p">
+        After each competitive run the game-over screen displays:
+      </p>
+      <ul class="wp-ul">
+        <li>Final score and all-time best score</li>
+        <li>EXP bar animation with level-up flash if a new level is reached</li>
+        <li><img src="images/bp.png" class="inline-img" alt="BP" /> BP earned this run</li>
+        <li><img src="images/seed.png" class="inline-img" alt="Seed" /> Seeds collected this run</li>
+        <li><img src="images/gold.png" class="inline-img" alt="Gold" /> $GOLD collected this run</li>
+        <li>Remaining energy count + countdown to next regen tick</li>
+        <li>Leaderboard button (opens paginated top-player modal)</li>
+      </ul>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Free to Play mode</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Energy system</span></div>
+        </button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         Energy system
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-energy">
+      <div class="page-tags"><span class="ptag">The Game</span></div>
+      <h1 class="page-title">Energy system</h1>
+      <p class="page-lead">
+        <img src="images/energy.png" class="inline-img" alt="Energy" />
+        Energy gates access to Competitive mode. Every player has a fixed pool of
+        <strong>20 Energy slots</strong>. Each competitive run consumes 1.
+        Energy regenerates automatically via your Nests.
+      </p>
+
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-box-value">20</div>
+          <div class="stat-box-label">Max energy (everyone)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value purple">1</div>
+          <div class="stat-box-label">Cost per competitive run</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value green">Full</div>
+          <div class="stat-box-label">Starting energy (new accounts)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value">Nest-based</div>
+          <div class="stat-box-label">Regen rate</div>
+        </div>
+      </div>
+
+      <h2 class="wp-h2">Regeneration rates by nest rarity</h2>
+      <p class="wp-p">
+        Each Nest you own runs its own independent regen timer tracked in the background.
+        When you open the game or dashboard, elapsed ticks are calculated and credited automatically.
+        More Nests = more parallel ticks = faster total refill.
+      </p>
+
+      <div class="wp-table-wrap">
+        <table class="wp-table">
           <thead>
-            <tr><th>Place</th><th>Share</th><th>Example (10,000 $CLASH pool)</th></tr>
+            <tr>
+              <th>Nest rarity</th>
+              <th>Regen rate</th>
+              <th>Time to fill 20 slots (solo)</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="td-hi">&#127941; 1st place</td>
-              <td class="reward-hi" style="color:var(--gold)">40%</td>
-              <td class="reward-hi">4,000 $CLASH</td>
+              <td><img src="images/nest/free.png" class="inline-img" alt="" /> Free</td>
+              <td>1 energy per <strong>4 hours</strong></td>
+              <td>80 hours</td>
             </tr>
             <tr>
-              <td class="td-hi">&#129352; 2nd place</td>
-              <td class="reward-hi" style="color:#c0c8d8">25%</td>
-              <td class="reward-hi">2,500 $CLASH</td>
+              <td><img src="images/nest/common.png" class="inline-img" alt="" /> Common</td>
+              <td>1 energy per <strong>1.5 hours</strong></td>
+              <td>30 hours</td>
             </tr>
             <tr>
-              <td class="td-hi">&#129353; 3rd place</td>
-              <td class="reward-hi" style="color:#cd7f32">15%</td>
-              <td class="reward-hi">1,500 $CLASH</td>
+              <td><img src="images/nest/rare.png" class="inline-img" alt="" /> Rare</td>
+              <td>1 energy per <strong>1 hour</strong></td>
+              <td>20 hours</td>
             </tr>
             <tr>
-              <td>4th &ndash; 15th place</td>
-              <td class="reward-hi">20% shared equally</td>
-              <td class="reward-hi">&asymp; 167 $CLASH each</td>
+              <td><img src="images/nest/legendary.png" class="inline-img" alt="" /> Legendary</td>
+              <td>1 energy per <strong>30 minutes</strong></td>
+              <td>10 hours</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="hint-box info">
-        <span class="hint-icon">&#8505;</span>
-        <div>
-          <div class="hint-title">How to climb</div>
-          <p>Earn battle points in every match. Battlepass holders receive a +10% (Tier 1) or +25% (Tier 2) BP bonus on all match types, giving them a compounding edge over the course of a season.</p>
-        </div>
+      <h2 class="wp-h2">Important rules</h2>
+      <ul class="wp-ul">
+        <li><strong>Timer pauses when full</strong> — once at 20 energy, all nest timers pause until you play a game.</li>
+        <li><strong>All timers restart on depletion from full</strong> — playing the first game from a full bar restarts all nest timers from that moment.</li>
+        <li><strong>Energy display</strong> — shown as a segmented bar on the Dashboard and Play screen. Green = adequate, yellow = low.</li>
+        <li><strong>Zero energy</strong> — the Competitive Play button is disabled and shows a countdown: "Next in X h Y m Z s" based on the fastest upcoming nest tick.</li>
+      </ul>
+
+      <div class="callout yellow">
+        ⚡ Tip: Owning multiple Nests stacks regen ticks. A player with 1 Legendary + 1 Rare Nest
+        gets 2 parallel ticks — potentially doubling refill speed vs a single nest.
+      </div>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Competitive mode</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Birds &amp; skins</span></div>
+        </button>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════
-         FAIR PLAY
-    ════════════════════════════════════════════════════════ -->
-    <section id="fairplay">
-      <h2>Fair play &amp; anti-abuse</h2>
-      <p>SOL Clash takes competitive integrity seriously. The reward system includes multiple safeguards to ensure that $CLASH distribution reflects genuine player skill &mdash; not exploit loops or automated farming.</p>
+    <!-- ══════════════════════════════════
+         Birds & Skins
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-birds">
+      <div class="page-tags"><span class="ptag">The Game</span></div>
+      <h1 class="page-title">Birds &amp; skins</h1>
+      <p class="page-lead">
+        Choose your bird before each game on the start screen. Three birds are available.
+        Bird choice is purely cosmetic — it does not affect physics, hitbox, or rewards.
+      </p>
 
-      <!-- AFK illustration -->
-      <div class="afk-banner">
-        <img class="afk-img" src="images/afk.png" alt="AFK / idle player"/>
-        <div class="afk-text">
-          <h3>AFK &amp; idle detection</h3>
-          <p>Players who go idle mid-match are automatically flagged. Matches completed suspiciously fast are withheld from reward distribution pending review.</p>
+      <h2 class="wp-h2">Available birds</h2>
+      <div class="bird-band">
+        <div class="bird-card">
+          <img src="images/birds/bird-1/Bird.png" alt="Bird 1" />
+          <span>Bird 1</span>
+        </div>
+        <div class="bird-card">
+          <img src="images/birds/bird-2/Bird.png" alt="Bird 2" />
+          <span>Bird 2</span>
+        </div>
+        <div class="bird-card">
+          <img src="images/birds/bird-3/bird21.png" alt="Bird 3" />
+          <span>Bird 3</span>
         </div>
       </div>
 
-      <div class="table-wrap">
-        <table>
+      <p class="wp-p">
+        Each bird has two animation frames that alternate to simulate wing flapping.
+        Your selected bird is saved to your account and
+        displayed on the Leaderboard next to your score.
+      </p>
+
+      <h2 class="wp-h2">Wing-flap animation</h2>
+      <p class="wp-p">
+        Two image frames per bird alternate at approximately <strong>5 fps</strong>
+        (every 0.15–0.20 seconds depending on bird). The tilt of the bird in-flight
+        scales with vertical velocity, clamped between −25° (nose up) and +70° (nose down into fall).
+      </p>
+
+      <div class="callout">
+        🎨 More bird skins are planned for future seasonal events and marketplace drops.
+        Current skins are cosmetic only with no gameplay effect.
+      </div>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Energy system</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Rank system</span></div>
+        </button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         Rank System
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-rank-system">
+      <div class="page-tags"><span class="ptag">The Game</span></div>
+      <h1 class="page-title">Rank system</h1>
+      <p class="page-lead">
+        <img src="images/bp.png" class="inline-img" alt="BP" />
+        Your rank is determined by cumulative <strong>Battle Points (BP)</strong>.
+        BP only ever goes up — it is never spent or reset. Five ranks exist, each with a
+        unique badge and an increased reward multiplier for future reward tiers.
+      </p>
+
+      <h2 class="wp-h2">Rank tiers</h2>
+      <div class="badge-band">
+        <div class="rank-card">
+          <img src="images/badges/bronze.png" alt="Bronze" />
+          <span class="rname">Bronze</span>
+          <span class="rbp">0 – 999 BP</span>
+        </div>
+        <div class="rank-card">
+          <img src="images/badges/silver.png" alt="Silver" />
+          <span class="rname">Silver</span>
+          <span class="rbp">1,000 – 4,999</span>
+        </div>
+        <div class="rank-card">
+          <img src="images/badges/gold.png" alt="Gold" />
+          <span class="rname">Gold</span>
+          <span class="rbp">5,000 – 14,999</span>
+        </div>
+        <div class="rank-card">
+          <img src="images/badges/platinum.png" alt="Platinum" />
+          <span class="rname">Platinum</span>
+          <span class="rbp">15,000 – 39,999</span>
+        </div>
+        <div class="rank-card">
+          <img src="images/badges/diamond.png" alt="Diamond" />
+          <span class="rname">Diamond</span>
+          <span class="rbp">40,000+ BP</span>
+        </div>
+      </div>
+
+      <h2 class="wp-h2">How BP is earned</h2>
+      <p class="wp-p">
+        BP is awarded at the end of every <strong>Competitive run</strong>.
+        The amount is randomly drawn from a range that scales with the
+        <strong>rarest Nest</strong> you own:
+      </p>
+      <div class="wp-table-wrap">
+        <table class="wp-table">
           <thead>
-            <tr><th>Rule</th><th>Details</th></tr>
+            <tr><th>Rarest nest owned</th><th>BP per game (random range)</th></tr>
           </thead>
           <tbody>
             <tr>
-              <td class="td-hi">Cooldown between same-pair matches</td>
-              <td>30-second wait before the same two players can be matched again in PvP</td>
+              <td><img src="images/nest/free.png" class="inline-img" alt="" /> Free only</td>
+              <td>1 – 20 BP</td>
             </tr>
             <tr>
-              <td class="td-hi">Diminishing returns</td>
-              <td>After 3 matches vs the same opponent within 1 hour, each additional match yields 50% of normal rewards</td>
+              <td><img src="images/nest/common.png" class="inline-img" alt="" /> Common</td>
+              <td>21 – 40 BP</td>
             </tr>
             <tr>
-              <td class="td-hi">Suspicious match detection</td>
-              <td>Matches completed in under 5 seconds are flagged and withheld from reward distribution pending review</td>
+              <td><img src="images/nest/rare.png" class="inline-img" alt="" /> Rare</td>
+              <td>41 – 70 BP</td>
             </tr>
             <tr>
-              <td class="td-hi">Repeat-match flagging</td>
-              <td>5 or more matches against the same opponent in 1 hour triggers an automatic abuse flag for manual review</td>
+              <td><img src="images/nest/legendary.png" class="inline-img" alt="" /> Legendary</td>
+              <td>71 – 100 BP</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="hint-box info">
-        <span class="hint-icon">&#8505;</span>
-        <div>
-          <p>These rules apply equally to all players regardless of rank or account age. No manual overrides exist for individual accounts.</p>
-        </div>
+      <div class="callout green">
+        ♾️ BP is permanent. It accumulates across all seasons, determines your lifetime rank badge,
+        and is also required for Nest upgrades. It never decreases.
+      </div>
+
+      <h2 class="wp-h2">BP spending (Nest upgrades)</h2>
+      <p class="wp-p">
+        BP is not just a rank metric — it is also spent on Nest upgrades alongside Seeds and $GOLD.
+        See the <a href="#upgrades" onclick="event.preventDefault(); document.getElementById('nav-upgrades').click();">Nest upgrades</a> page for full upgrade costs.
+      </p>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Birds &amp; skins</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">$GOLD token</span></div>
+        </button>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════
-         WALLET
-    ════════════════════════════════════════════════════════ -->
-    <section id="wallet">
-      <h2>Your wallet</h2>
-      <p>Every SOL Clash account includes a built-in Solana wallet &mdash; no external browser extension or third-party app required. Your wallet is generated automatically at signup and is permanently tied to your account.</p>
+    <!-- ══════════════════════════════════
+         $GOLD Token
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-token">
+      <div class="page-tags">
+        <span class="ptag">Economy</span>
+        <span class="ptag green">pump.fun</span>
+      </div>
+      <h1 class="page-title">$GOLD token</h1>
+      <p class="page-lead">
+        <img src="images/gold.png" class="inline-img" alt="Gold" />
+        <strong>$GOLD</strong> is the native token of the SOL Clash ecosystem, launched on
+        <strong>pump.fun</strong> on the Solana blockchain. It is earned through competitive
+        gameplay, spent on Nest purchases and upgrades, and is deflationary by design —
+        the treasury burns <strong>30% of its $GOLD holdings weekly</strong>.
+      </p>
 
-      <div class="card-grid" style="grid-template-columns:1fr">
-        <div class="card">
-          <h3>Self-custody</h3>
-          <p>Your wallet is generated from a 12-word recovery phrase that only you can access. SOL Clash never stores your recovery phrase in plain text &mdash; it is encrypted before ever touching our systems. You own your funds.</p>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-box-value gold">1,000,000,000</div>
+          <div class="stat-box-label">Total supply (1 Billion)</div>
         </div>
-        <div class="card">
-          <h3>SOL withdrawals</h3>
-          <p>Withdrawals to any external Solana address are available at any time. A secondary security PIN is required before any outbound transfer is processed, adding a layer of protection against unauthorized withdrawals.</p>
+        <div class="stat-box">
+          <div class="stat-box-value green">pump.fun</div>
+          <div class="stat-box-label">Launch platform</div>
         </div>
-        <div class="card">
-          <h3>$CLASH balance</h3>
-          <p>Your $CLASH balance is visible on your dashboard and updates in real time after every match. Balances are stored on-chain and reflect your true earning history across all game modes.</p>
+        <div class="stat-box">
+          <div class="stat-box-value purple">30% weekly</div>
+          <div class="stat-box-label">Treasury burn rate</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value">12:00 PM GMT+8</div>
+          <div class="stat-box-label">Daily payout schedule</div>
         </div>
       </div>
 
-      <div class="hint-box success">
-        <span class="hint-icon">&#9723;</span>
-        <div>
-          <div class="hint-title">No crypto experience needed</div>
-          <p>SOL Clash handles all blockchain complexity behind the scenes. You interact with a standard gaming interface &mdash; the Solana wallet powers everything invisibly in the background.</p>
+      <h2 class="wp-h2">Token overview</h2>
+      <div class="cards-grid">
+        <div class="wp-card">
+          <div class="wp-card-icon">🔥</div>
+          <h4>Deflationary by design</h4>
+          <p>The SOL Clash treasury burns 30% of its held $GOLD every week. Every burn permanently removes tokens from circulation, reducing total supply over time.</p>
         </div>
+        <div class="wp-card">
+          <img src="images/solana.png" class="wp-card-img" alt="Solana" />
+          <h4>Solana SPL token</h4>
+          <p>$GOLD is a standard Solana SPL token launched via pump.fun. It lives on-chain and can be held in any Solana-compatible wallet.</p>
+        </div>
+        <div class="wp-card">
+          <div class="wp-card-icon">🎮</div>
+          <h4>Play to earn</h4>
+          <p>Each pipe cleared during a Competitive run has a chance to drop <strong>500–1,000 $GOLD</strong>. Collected $GOLD is paid out to your wallet daily at 12:00 PM GMT+8.</p>
+        </div>
+        <div class="wp-card">
+          <div class="wp-card-icon">💱</div>
+          <h4>Swappable to SOL</h4>
+          <p>Swap your $GOLD balance directly to SOL from the Dashboard. The rate is based on the live <strong>SOL/$GOLD</strong> market price — no third-party exchange needed.</p>
+        </div>
+      </div>
+
+      <h2 class="wp-h2">Contract address</h2>
+      <div class="callout">
+        🔗 <strong>CA:</strong> Coming Soon — the contract address will be published here and on all official SOL Clash channels upon launch. Always verify through official sources to avoid scam tokens.
+      </div>
+
+      <h2 class="wp-h2">Weekly treasury burn</h2>
+      <p class="wp-p">
+        Every week, the SOL Clash treasury wallet burns <strong>30% of its $GOLD balance</strong>.
+        Burned tokens are sent to a verifiable dead address on Solana, permanently removing them
+        from the circulating supply. This mechanism creates consistent deflationary pressure over time,
+        rewarding long-term holders and players who accumulate $GOLD through gameplay.
+      </p>
+      <p class="wp-p">
+        All burn transactions are on-chain and publicly verifiable. Burn events will be announced
+        on official social channels with the transaction signature for transparency.
+      </p>
+
+      <h2 class="wp-h2">Earning $GOLD — how it works</h2>
+      <p class="wp-p">
+        During every Competitive run, <img src="images/gold.png" class="inline-img" alt="Gold" /> $GOLD
+        coins appear inside pipe gaps. Each pipe that has a $GOLD drop awards between
+        <strong>500 and 1,000 $GOLD</strong> when your bird passes through it.
+        The spawn rate of gold coins per pipe depends on the Nests you own — better Nests
+        produce gold coins more frequently.
+      </p>
+
+      <h2 class="wp-h2">Scheduled Gold Payout</h2>
+      <p class="wp-p">
+        $GOLD does not credit instantly to your wallet mid-game. Instead, a
+        <strong>Scheduled Gold Payout</strong> system runs at a fixed time every day —
+        <strong>12:00 PM GMT+8</strong>. All $GOLD collected across your competitive runs
+        during the day is tallied and automatically transferred to your generated
+        Solana wallet at payout time. No manual claiming required.
+      </p>
+      <div class="callout green">
+        🕛 <strong>Payout time: 12:00 PM GMT+8 daily.</strong> Any $GOLD you collect before
+        that time is transferred automatically to your in-game wallet. You do not need to
+        do anything — just play and wait for the scheduled transfer.
+      </div>
+
+      <h2 class="wp-h2">Spending $GOLD</h2>
+      <ul class="wp-ul">
+        <li><strong>Nest purchases</strong> — buy any Nest from the Marketplace using $GOLD instead of SOL. The $GOLD price is calculated using the live <strong>SOL/$GOLD</strong> market rate at time of purchase.</li>
+        <li><strong>Nest upgrades</strong> — each upgrade level requires $GOLD alongside Battle Points and Seeds (see Nest upgrades page).</li>
+        <li><strong>Marketplace items</strong> — consumables and skins (planned for future updates).</li>
+      </ul>
+
+      <h2 class="wp-h2">Swapping $GOLD to SOL</h2>
+      <p class="wp-p">
+        Use the <strong>Swap</strong> tool in your Dashboard to convert $GOLD into real SOL.
+        A small 2% fee applies. The minimum swap amount is <strong>102 $GOLD</strong>.
+        The conversion uses the live <strong>SOL/$GOLD</strong> market rate at the time of the swap.
+        SOL is sent directly to your in-game Solana wallet and the transaction is verifiable
+        on-chain. If anything goes wrong during the transfer, your $GOLD is automatically refunded.
+      </p>
+
+      <h2 class="wp-h2">Nest purchase prices</h2>
+      <div class="wp-table-wrap">
+        <table class="wp-table">
+          <thead>
+            <tr><th>Nest</th><th>SOL price</th><th>$GOLD price</th><th>Payment methods</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="images/nest/free.png" class="inline-img" alt="" /> Free Nest</td>
+              <td>0 SOL</td>
+              <td>Free</td>
+              <td>Auto-granted on signup</td>
+            </tr>
+            <tr>
+              <td><img src="images/nest/common.png" class="inline-img" alt="" /> Ice Nest (Common)</td>
+              <td>~0.35 SOL</td>
+              <td>Based on live SOL/$GOLD rate</td>
+              <td>SOL or $GOLD</td>
+            </tr>
+            <tr>
+              <td><img src="images/nest/rare.png" class="inline-img" alt="" /> Volcano Nest (Rare)</td>
+              <td>~0.75 SOL</td>
+              <td>Based on live SOL/$GOLD rate</td>
+              <td>SOL or $GOLD</td>
+            </tr>
+            <tr>
+              <td><img src="images/nest/legendary.png" class="inline-img" alt="" /> Cosmic Nest (Legendary)</td>
+              <td>~1.2 SOL</td>
+              <td>Based on live SOL/$GOLD rate</td>
+              <td>SOL or $GOLD</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Rank system</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Nests</span></div>
+        </button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         Nests
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-nests">
+      <div class="page-tags"><span class="ptag">Economy</span></div>
+      <h1 class="page-title">Nests</h1>
+      <p class="page-lead">
+        Nests are the core asset of SOL Clash. Every account receives one Free Nest on signup.
+        Owning better Nests gives you <strong>faster Energy regeneration</strong>,
+        <strong>higher BP per game</strong>, and access to the <strong>Hatchery</strong> (farm).
+      </p>
+
+      <h2 class="wp-h2">The four nest types</h2>
+      <div class="nest-band">
+        <div class="nest-card">
+          <img src="images/nest/free.png" alt="Free Nest" />
+          <div class="nest-name">Free Nest</div>
+          <div class="nest-rarity">Free</div>
+        </div>
+        <div class="nest-card">
+          <img src="images/nest/common.png" alt="Ice Nest" />
+          <div class="nest-name">Ice Nest</div>
+          <div class="nest-rarity">Common</div>
+        </div>
+        <div class="nest-card">
+          <img src="images/nest/rare.png" alt="Volcano Nest" />
+          <div class="nest-name">Volcano Nest</div>
+          <div class="nest-rarity">Rare</div>
+        </div>
+        <div class="nest-card">
+          <img src="images/nest/legendary.png" alt="Cosmic Nest" />
+          <div class="nest-name">Cosmic Nest</div>
+          <div class="nest-rarity">Legendary</div>
+        </div>
+      </div>
+
+      <h2 class="wp-h2">Nest benefits at a glance</h2>
+      <div class="wp-table-wrap">
+        <table class="wp-table">
+          <thead>
+            <tr><th>Rarity</th><th>Energy regen</th><th>BP per game</th><th>Upgradeable?</th><th>Hatchery eligible?</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge blue">Free</span></td>
+              <td>1 / 4 h</td>
+              <td>1–20</td>
+              <td>❌ No</td>
+              <td>❌ No</td>
+            </tr>
+            <tr>
+              <td><span class="badge green">Common</span></td>
+              <td>1 / 1.5 h</td>
+              <td>21–40</td>
+              <td>✅ Up to Lvl 5</td>
+              <td>✅ At Lvl 3+</td>
+            </tr>
+            <tr>
+              <td><span class="badge gold">Rare</span></td>
+              <td>1 / 1 h</td>
+              <td>41–70</td>
+              <td>✅ Up to Lvl 5</td>
+              <td>✅ At Lvl 3+</td>
+            </tr>
+            <tr>
+              <td><span class="badge purple">Legendary</span></td>
+              <td>1 / 30 min</td>
+              <td>71–100</td>
+              <td>✅ Up to Lvl 5</td>
+              <td>✅ At Lvl 3+</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="wp-h2">Multiple nests</h2>
+      <p class="wp-p">
+        You can own multiple Nests. Each one runs its own <strong>independent energy regen timer</strong>
+        in parallel. Owning 3 Rare Nests, for example, generates 3 ticks per hour — tripling refill speed
+        compared to a single Rare Nest. There is no cap on how many Nests you can own.
+      </p>
+      <p class="wp-p">
+        BP is determined by the <strong>rarest</strong> nest you own, not the total count.
+        So owning 10 Common Nests still awards 21–40 BP per game; you need at least one Rare or Legendary
+        to unlock higher BP ranges.
+      </p>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">$GOLD token</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Nest upgrades</span></div>
+        </button>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════
-         ROADMAP
-    ════════════════════════════════════════════════════════ -->
-    <section id="roadmap">
-      <h2>Roadmap</h2>
-      <p>SOL Clash has a clear phased development path. Core gameplay is live and battle-tested. Future phases focus on decentralization, token launch, and ecosystem expansion.</p>
+    <!-- ══════════════════════════════════
+         Nest Upgrades
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-upgrades">
+      <div class="page-tags"><span class="ptag">Economy</span></div>
+      <h1 class="page-title">Nest upgrades</h1>
+      <p class="page-lead">
+        Non-Free Nests can be upgraded up to <strong>Level 5</strong> via the Inventory screen.
+        Each upgrade costs a combination of <img src="images/bp.png" class="inline-img" alt="BP" /> Battle Points,
+        <img src="images/seed.png" class="inline-img" alt="Seeds" /> Seeds, and
+        <img src="images/gold.png" class="inline-img" alt="Gold" /> $GOLD.
+        Upgrades unlock Hatchery access at Lvl 3 and increase Egg production at Lvl 4 and 5.
+      </p>
 
-      <div class="steps">
-        <div class="step">
-          <div class="step-num done">&#10003;</div>
-          <div class="step-body">
-            <h3>Phase 1 &mdash; Foundation <span class="badge b-green" style="margin-left:6px">Complete</span></h3>
-            <p>Player authentication, wallet generation, arena system, $CLASH reward engine, picks system, leaderboard, and rank progression.</p>
-          </div>
+      <h2 class="wp-h2">Upgrade costs per level step</h2>
+      <div class="wp-table-wrap">
+        <table class="wp-table">
+          <thead>
+            <tr>
+              <th>Level step</th>
+              <th><img src="images/bp.png" class="inline-img" alt="" /> BP</th>
+              <th><img src="images/seed.png" class="inline-img" alt="" /> Seeds</th>
+              <th><img src="images/gold.png" class="inline-img" alt="" /> $GOLD</th>
+              <th>Unlock</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0 → 1</td><td>350</td><td>50</td><td>50,000</td><td>—</td></tr>
+            <tr><td>1 → 2</td><td>500</td><td>110</td><td>120,000</td><td>—</td></tr>
+            <tr><td>2 → 3</td><td>800</td><td>160</td><td>250,000</td><td><span class="badge green">Hatchery access</span></td></tr>
+            <tr><td>3 → 4</td><td>1,000</td><td>220</td><td>350,000</td><td><span class="badge gold">Faster egg rate</span></td></tr>
+            <tr><td>4 → 5</td><td>1,300</td><td>300</td><td>500,000</td><td><span class="badge purple">Max egg rate</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="wp-h2">Total cost to max (Lvl 0 → 5)</h2>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-box-value purple">3,950 BP</div>
+          <div class="stat-box-label">Total Battle Points</div>
         </div>
-        <div class="step">
-          <div class="step-num done">&#10003;</div>
-          <div class="step-body">
-            <h3>Phase 2 &mdash; Arena &amp; Economy <span class="badge b-green" style="margin-left:6px">Complete</span></h3>
-            <p>Solo and PvP arenas, real-time multiplayer matchmaking, marketplace, battle points, inventory, anti-abuse engine, and admin tools.</p>
-          </div>
+        <div class="stat-box">
+          <div class="stat-box-value green">840 Seeds</div>
+          <div class="stat-box-label">Total Seeds</div>
         </div>
-        <div class="step">
-          <div class="step-num active">&#8594;</div>
-          <div class="step-body">
-            <h3>Phase 3 &mdash; Mainnet Launch <span class="badge b-purple" style="margin-left:6px">In progress</span></h3>
-            <p>Transition from testnet to Solana Mainnet, on-chain match verification, third-party security audit, and public token deployment.</p>
-          </div>
+        <div class="stat-box">
+          <div class="stat-box-value gold">1,270,000</div>
+          <div class="stat-box-label">Total $GOLD</div>
         </div>
-        <div class="step">
-          <div class="step-num">&#9675;</div>
-          <div class="step-body">
-            <h3>Phase 4 &mdash; Token Ecosystem <span class="badge b-gray" style="margin-left:6px">Planned</span></h3>
-            <p>$CLASH SPL token public launch, DEX liquidity, staking mechanism, token-gated features, and community governance voting.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">&#9675;</div>
-          <div class="step-body">
-            <h3>Phase 5 &mdash; Expansion <span class="badge b-gray" style="margin-left:6px">Planned</span></h3>
-            <p>Mobile apps, tournament brackets, guild system, cross-platform leaderboards, and third-party developer SDK.</p>
-          </div>
-        </div>
+      </div>
+
+      <h2 class="wp-h2">How upgrades work</h2>
+      <ul class="wp-ul">
+        <li>Upgrade via the <strong>Inventory</strong> page → click a Nest → Upgrade tab.</li>
+        <li>The system verifies you have enough BP, Seeds, and $GOLD before applying the upgrade.</li>
+        <li>Resources are deducted all at once — the upgrade either fully applies or nothing is deducted.</li>
+        <li><strong>Free Nests cannot be upgraded</strong> — the Upgrade tab is hidden for them.</li>
+      </ul>
+
+      <div class="callout">
+        🌱 Seeds and $GOLD are collected in-game. BP accumulates from every competitive run.
+        You need to play consistently across all three to afford higher-level upgrades.
+      </div>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Nests</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Hatchery / Farm</span></div>
+        </button>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════
-         DISCLAIMER
-    ════════════════════════════════════════════════════════ -->
-    <section id="disclaimer">
-      <h2>Disclaimer</h2>
-      <p>This whitepaper is provided for informational purposes only and describes the current and planned state of the SOL Clash platform. It does not constitute financial advice, an investment prospectus, or a solicitation of any kind.</p>
+    <!-- ══════════════════════════════════
+         Farm / Hatchery
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-farm">
+      <div class="page-tags"><span class="ptag">Economy</span></div>
+      <h1 class="page-title">Hatchery / Farm</h1>
+      <p class="page-lead">
+        <img src="images/egg.png" class="inline-img" alt="Egg" />
+        The <strong>Hatchery</strong> is a passive income layer. Place your upgraded Nests
+        (Lvl 3+) into the Hatchery and they generate <strong>Eggs</strong> over time —
+        no active gameplay required. Collect your Eggs when they're ready.
+      </p>
 
-      <div class="hint-box warning">
-        <span class="hint-icon">&#9678;</span>
-        <div>
-          <div class="hint-title">Not a gambling platform</div>
-          <p>SOL Clash match outcomes are determined entirely by player performance in a skill-based arena system. No element of chance or random outcome determines $CLASH distribution.</p>
+      <h2 class="wp-h2">Access requirements</h2>
+      <ul class="wp-ul">
+        <li>Only <strong>non-Free Nests at Level 3 or higher</strong> are eligible for the Hatchery.</li>
+        <li>Nests can be placed and removed at any time from the Farm page.</li>
+        <li>Multiple Nests can run simultaneously in the Hatchery.</li>
+      </ul>
+
+      <h2 class="wp-h2">Egg production rates</h2>
+      <div class="wp-table-wrap">
+        <table class="wp-table">
+          <thead>
+            <tr>
+              <th>Nest rarity</th>
+              <th>Lvl 3 rate</th>
+              <th>Lvl 4 rate</th>
+              <th>Lvl 5 rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="images/nest/common.png" class="inline-img" alt="" /> Common</td>
+              <td>1 egg / 90 min</td>
+              <td>1 egg / 60 min</td>
+              <td>1 egg / 30 min</td>
+            </tr>
+            <tr>
+              <td><img src="images/nest/rare.png" class="inline-img" alt="" /> Rare</td>
+              <td>2 eggs / 90 min</td>
+              <td>2 eggs / 60 min</td>
+              <td>2 eggs / 30 min</td>
+            </tr>
+            <tr>
+              <td><img src="images/nest/legendary.png" class="inline-img" alt="" /> Legendary</td>
+              <td>3 eggs / 90 min</td>
+              <td>3 eggs / 60 min</td>
+              <td>3 eggs / 30 min</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="wp-h2">How hatching works</h2>
+      <ol class="wp-ol">
+        <li>Open the <strong>Farm</strong> page. The fullscreen farm map shows your hatchery hotspot.</li>
+        <li>Eggs accumulate in the background as time passes. The client shows a live countdown per Nest.</li>
+        <li>When a Nest has pending eggs, a <strong>Hatch</strong> button activates.</li>
+        <li>Tap Hatch — all pending eggs are collected at once and the timer resets.</li>
+        <li>Your total eggs hatched are tracked in your profile.</li>
+      </ol>
+
+      <div class="callout yellow">
+        🥚 The <strong>Egg Market</strong> is listed on the Farm map but marked
+        "Coming Soon" — trading Eggs between players is planned for a future update.
+      </div>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Nest upgrades</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Reward structure</span></div>
+        </button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         Reward structure
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-rewards">
+      <div class="page-tags"><span class="ptag">Economy</span></div>
+      <h1 class="page-title">Reward structure</h1>
+      <p class="page-lead">
+        Every Competitive run distributes four distinct resource types.
+        The quantity of each scales with your performance and the Nests you own.
+      </p>
+
+      <h2 class="wp-h2">Reward types per run</h2>
+      <div class="cards-grid">
+        <div class="wp-card">
+          <img src="images/gold.png" class="wp-card-img" alt="$GOLD" />
+          <h4>$GOLD</h4>
+          <p>Each pipe with a gold drop awards 500–1,000 $GOLD. Paid out daily at 12:00 PM GMT+8 directly to your Solana wallet. Swappable to SOL any time.</p>
+        </div>
+        <div class="wp-card">
+          <img src="images/seed.png" class="wp-card-img" alt="Seeds" />
+          <h4>Seeds</h4>
+          <p>Collected mid-run. Used exclusively for Nest upgrades. Capped at <strong>50 Seeds max per run</strong> to keep rewards fair.</p>
+        </div>
+        <div class="wp-card">
+          <img src="images/bp.png" class="wp-card-img" alt="BP" />
+          <h4>Battle Points</h4>
+          <p>Awarded after every run based on your rarest Nest. Determines rank and required for upgrades.</p>
+        </div>
+        <div class="wp-card">
+          <img src="images/exp.png" class="wp-card-img" alt="EXP" />
+          <h4>EXP</h4>
+          <p>Awarded based on score and run duration. Fills your EXP bar; leveling up is cosmetic at this stage.</p>
         </div>
       </div>
 
-      <div class="hint-box warning">
-        <span class="hint-icon">&#9678;</span>
-        <div>
-          <div class="hint-title">Regulatory notice</div>
-          <p>The legal status of blockchain utility tokens varies by jurisdiction. Players are solely responsible for understanding and complying with the laws applicable in their country of residence. SOL Clash does not offer services in jurisdictions where doing so would be prohibited.</p>
-        </div>
+      <h2 class="wp-h2">Collectible spawn rates</h2>
+      <p class="wp-p">
+        The rate at which <img src="images/gold.png" class="inline-img" alt="" /> $GOLD and
+        <img src="images/seed.png" class="inline-img" alt="" /> Seeds appear in pipe gaps is
+        governed by the Nests in your inventory. The Inventory page shows a live
+        <strong>Drop Rate panel</strong> that displays the current seed/gold spawn percentages
+        based on what you own.
+      </p>
+
+      <div class="callout green">
+        📈 Better Nests = higher in-run collectible spawn rates = more $GOLD and Seeds per run.
+        The core progression loop: Play → Earn → Upgrade Nest → Earn more per run.
       </div>
 
-      <div class="hint-box warning">
-        <span class="hint-icon">&#9678;</span>
-        <div>
-          <div class="hint-title">Risk disclosure</div>
-          <p>Blockchain assets carry inherent risks including network volatility, smart contract vulnerabilities, and regulatory changes. Never commit funds you cannot afford to lose. SOL Clash features described in this document are subject to change prior to mainnet launch.</p>
-        </div>
+      <h2 class="wp-h2">Fair reward enforcement</h2>
+      <p class="wp-p">
+        All rewards are validated before being credited. A minimum cooldown is enforced between
+        score submissions to prevent rapid-fire farming. Seeds collected per run are capped at
+        <strong>50 maximum</strong> regardless of in-game events. This ensures the reward economy
+        stays balanced and fair for all players.
+      </p>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Hatchery / Farm</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Marketplace</span></div>
+        </button>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════
-         CONTACTS
-    ════════════════════════════════════════════════════════ -->
-    <section id="contacts">
-      <h2>Contacts &amp; community</h2>
-      <p>Find SOL Clash across the web. All official links are listed below &mdash; bookmark them and join the community.</p>
+    <!-- ══════════════════════════════════
+         Marketplace
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-marketplace">
+      <div class="page-tags"><span class="ptag">Economy</span></div>
+      <h1 class="page-title">Marketplace</h1>
+      <p class="page-lead">
+        The Marketplace is where players purchase Nests to unlock better Energy regen,
+        higher BP ranges, and Hatchery access. Two payment methods are available for
+        every Nest: <strong>SOL</strong> (on-chain) or <strong>$GOLD</strong> (instant).
+      </p>
 
-      <div class="contacts-group">
-        <div class="contacts-group-label">Official</div>
-        <div class="contacts-grid">
-
-          <a class="contact-card" href="https://sol-clash.xyz" target="_blank" rel="noopener">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <div class="contact-body">
-              <div class="contact-title">Website</div>
-              <div class="contact-url">sol-clash.xyz</div>
-            </div>
-            <div class="contact-arrow">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
-            </div>
-          </a>
-
-          <a class="contact-card" href="https://whitepaper.sol-clash.xyz" target="_blank" rel="noopener">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            </div>
-            <div class="contact-body">
-              <div class="contact-title">Whitepaper</div>
-              <div class="contact-url">whitepaper.sol-clash.xyz</div>
-            </div>
-            <div class="contact-arrow">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
-            </div>
-          </a>
-
-          <a class="contact-card" href="https://giveaway.sol-clash.xyz" target="_blank" rel="noopener">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-            </div>
-            <div class="contact-body">
-              <div class="contact-title">Giveaway Events</div>
-              <div class="contact-url">giveaway.sol-clash.xyz</div>
-            </div>
-            <div class="contact-arrow">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
-            </div>
-          </a>
-
+      <h2 class="wp-h2">Available nests</h2>
+      <div class="nest-band">
+        <div class="nest-card">
+          <img src="images/nest/common.png" alt="Ice Nest" />
+          <div class="nest-name">Ice Nest</div>
+          <div class="nest-rarity">Common · ~0.35 SOL</div>
+        </div>
+        <div class="nest-card">
+          <img src="images/nest/rare.png" alt="Volcano Nest" />
+          <div class="nest-name">Volcano Nest</div>
+          <div class="nest-rarity">Rare · ~0.75 SOL</div>
+        </div>
+        <div class="nest-card">
+          <img src="images/nest/legendary.png" alt="Cosmic Nest" />
+          <div class="nest-name">Cosmic Nest</div>
+          <div class="nest-rarity">Legendary · ~1.2 SOL</div>
         </div>
       </div>
 
-      <div class="contacts-group">
-        <div class="contacts-group-label">Community</div>
-        <div class="contacts-grid">
-
-          <a class="contact-card contact-discord" href="https://discord.sol-clash.xyz" target="_blank" rel="noopener">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-            </div>
-            <div class="contact-body">
-              <div class="contact-title">Discord</div>
-              <div class="contact-url">discord.sol-clash.xyz</div>
-            </div>
-            <div class="contact-arrow">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
-            </div>
-          </a>
-
-          <a class="contact-card contact-telegram" href="https://telegram.sol-clash.xyz" target="_blank" rel="noopener">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
-            </div>
-            <div class="contact-body">
-              <div class="contact-title">Telegram</div>
-              <div class="contact-url">telegram.sol-clash.xyz</div>
-            </div>
-            <div class="contact-arrow">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
-            </div>
-          </a>
-
-          <a class="contact-card contact-facebook" href="https://fb.sol-clash.xyz" target="_blank" rel="noopener">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-            </div>
-            <div class="contact-body">
-              <div class="contact-title">Facebook</div>
-              <div class="contact-url">fb.sol-clash.xyz</div>
-            </div>
-            <div class="contact-arrow">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
-            </div>
-          </a>
-
-          <a class="contact-card contact-twitter" href="https://x.sol-clash.xyz" target="_blank" rel="noopener">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </div>
-            <div class="contact-body">
-              <div class="contact-title">Twitter / X</div>
-              <div class="contact-url">x.sol-clash.xyz</div>
-            </div>
-            <div class="contact-arrow">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 5l3 3-3 3"/></svg>
-            </div>
-          </a>
-
+      <h2 class="wp-h2">Payment methods</h2>
+      <div class="cards-grid">
+        <div class="wp-card">
+          <img src="images/solana.png" class="wp-card-img" alt="SOL" />
+          <h4>Pay with SOL</h4>
+          <p>Real on-chain Solana transaction from your in-game wallet to the store. Transaction is confirmed on-chain before the Nest is granted to your inventory.</p>
         </div>
+        <div class="wp-card">
+          <img src="images/gold.png" class="wp-card-img" alt="$GOLD" />
+          <h4>Pay with $GOLD</h4>
+          <p>Instant balance deduction from your in-game $GOLD. No separate blockchain transaction needed. Price is based on the live <strong>SOL/$GOLD</strong> market rate at time of purchase.</p>
+        </div>
+      </div>
+
+      <h2 class="wp-h2">SOL purchase flow</h2>
+      <ol class="wp-ol">
+        <li>Select a Nest and choose SOL as payment method.</li>
+        <li>Your in-game custodial wallet signs and broadcasts the SOL transfer to the store wallet.</li>
+        <li>The transaction is confirmed on the Solana network before proceeding.</li>
+        <li>Once confirmed, the Nest is added to your inventory with a unique tag (e.g. <em>Ice Nest#4728</em>).</li>
+      </ol>
+
+      <div class="callout yellow">
+        ⚠️ An <strong>Auction</strong> tab is listed in the Marketplace UI but is currently
+        "Coming Soon" — player-to-player Nest trading is planned for a future update.
+      </div>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Reward structure</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Leaderboard</span></div>
+        </button>
       </div>
     </section>
-    <!-- FOOTER -->
-    <div class="page-footer">
-      SOL Clash Whitepaper v1.0 &middot; Published June 2026 &middot; Subject to revision without notice.
-    </div>
 
-  </div><!-- /.page -->
-</div><!-- /.main -->
+    <!-- ══════════════════════════════════
+         Leaderboard
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-leaderboard">
+      <div class="page-tags">
+        <span class="ptag">Economy</span>
+        <span class="ptag green">Reward Pool</span>
+      </div>
+      <h1 class="page-title">Leaderboard</h1>
+      <p class="page-lead">
+        The global leaderboard ranks all players by <strong>Total Score</strong> — the cumulative
+        sum of every point scored across all competitive games ever played.
+        The <strong>Top 20 players</strong> each season share a
+        <strong>5,000,000 $GOLD reward pool</strong>.
+      </p>
 
-<script>
-(function () {
-  var sidebar   = document.getElementById('sidebar');
-  var overlay   = document.getElementById('overlay');
-  var hamburger = document.getElementById('hamburger');
-  var pageEl    = document.getElementById('page-content');
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-box-value gold">5,000,000</div>
+          <div class="stat-box-label">$GOLD reward pool</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value purple">Top 20</div>
+          <div class="stat-box-label">Players rewarded</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value green">2,000,000</div>
+          <div class="stat-box-label">1st place payout</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value">Total Score</div>
+          <div class="stat-box-label">Ranking metric</div>
+        </div>
+      </div>
 
-  /* ── Sidebar order — defines prev/next sequence ────────────── */
-  var PAGE_ORDER = [
-    'intro','vision','how-to-play','singleplayer','multiplayer','ranks',
-    'token','rewards','nft','marketplace','leaderboard',
-    'fairplay','wallet','roadmap','disclaimer','contacts'
-  ];
+      <h2 class="wp-h2">Reward pool distribution</h2>
+      <p class="wp-p">
+        At the end of each season the <strong>5,000,000 $GOLD</strong> prize pool is
+        distributed to the top 20 players based on their final leaderboard position.
+      </p>
 
-  /* ── Label map for prev/next titles ───────────────────────── */
-  var PAGE_LABELS = {
-    'intro':        'Introduction',
-    'vision':       'Vision & mission',
-    'how-to-play':  'How to play',
-    'singleplayer': 'Singleplayer arena',
-    'multiplayer':  'Multiplayer arena',
-    'ranks':        'Rank system',
-    'token':        '$CLASH token',
-    'rewards':      'Reward structure',
-    'nft':          'NFT & picks',
-    'marketplace':  'Marketplace',
-    'leaderboard':  'Leaderboard',
-    'fairplay':     'Fair play',
-    'wallet':       'Your wallet',
-    'roadmap':      'Roadmap',
-    'disclaimer':   'Disclaimer',
-    'contacts':     'Contacts'
-  };
+      <div class="wp-table-wrap">
+        <table class="wp-table">
+          <thead>
+            <tr>
+              <th>Place</th>
+              <th>Pool share</th>
+              <th>$GOLD payout</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🥇 1st place</td>
+              <td><span class="badge purple">40%</span></td>
+              <td><strong>2,000,000 $GOLD</strong></td>
+            </tr>
+            <tr>
+              <td>🥈 2nd place</td>
+              <td><span class="badge green">25%</span></td>
+              <td><strong>1,250,000 $GOLD</strong></td>
+            </tr>
+            <tr>
+              <td>🥉 3rd place</td>
+              <td><span class="badge gold">15%</span></td>
+              <td><strong>750,000 $GOLD</strong></td>
+            </tr>
+            <tr>
+              <td>4th – 15th place</td>
+              <td><span class="badge blue">20% shared equally</span></td>
+              <td><strong>~83,333 $GOLD each</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-  /* ── Breadcrumb map ────────────────────────────────────────── */
-  var BREADCRUMB = document.querySelector('.breadcrumb span:last-child');
+      <div class="callout green">
+        💰 The 4th–15th split of 20% = 1,000,000 $GOLD shared across 12 players — roughly
+        <strong>83,333 $GOLD each</strong>. All payouts are distributed automatically to each
+        player's in-game Solana wallet at the close of the season.
+      </div>
 
-  /* ── Mobile sidebar ─────────────────────────────────────────── */
-  function openSidebar() {
-    sidebar.classList.add('open');
-    overlay.classList.add('open');
-    hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeSidebar() {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-  hamburger.addEventListener('click', function () {
-    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
-  });
-  overlay.addEventListener('click', closeSidebar);
+      <h2 class="wp-h2">How the leaderboard works</h2>
+      <ul class="wp-ul">
+        <li><strong>Metric:</strong> Total Score — increases by your score every competitive run. Never resets mid-season.</li>
+        <li><strong>Best score:</strong> Your single-game high score is also displayed per player for reference.</li>
+        <li><strong>Real-time display:</strong> Paginated 5 players per page, accessible from the game-over screen after every competitive run.</li>
+        <li><strong>Player identity:</strong> Shown as a truncated wallet address with avatar and rank badge.</li>
+        <li><strong>Bird preview:</strong> Each leaderboard row shows the bird skin the player has selected.</li>
+      </ul>
 
-  /* ── Show a section by id ───────────────────────────────────── */
-  function showPage(id) {
-    var sections = document.querySelectorAll('.page > section');
-    var navItems = document.querySelectorAll('.nav-item[href]');
-    var target   = document.getElementById(id);
+      <div class="callout">
+        🏆 Every competitive run contributes to your total score — even a score of 1.
+        Consistent play over time builds leaderboard rank regardless of peak performance.
+        You don't need a single perfect run — you need volume and consistency.
+      </div>
 
-    if (!target) return;
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Marketplace</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Your wallet</span></div>
+        </button>
+      </div>
+    </section>
 
-    /* Hide all, show target */
-    sections.forEach(function (s) { s.classList.remove('page-active'); });
-    target.classList.add('page-active');
+    <!-- ══════════════════════════════════
+         Your Wallet
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-wallet">
+      <div class="page-tags"><span class="ptag">Platform</span></div>
+      <h1 class="page-title">Your wallet</h1>
+      <p class="page-lead">
+        Every SOL Clash account includes a <strong>custodial Solana wallet</strong> generated
+        automatically at signup. No browser extension, no Phantom, no prior crypto knowledge
+        needed. Your wallet is secure, functional, and immediately ready to receive SOL.
+      </p>
 
-    /* Scroll content area to top */
-    pageEl.scrollTop = 0;
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-box-value green">Auto-created</div>
+          <div class="stat-box-label">On first login</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value purple">Encrypted</div>
+          <div class="stat-box-label">Keys secured at rest</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value">12 words</div>
+          <div class="stat-box-label">12-word seed phrase</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-value">Solana</div>
+          <div class="stat-box-label">Native network</div>
+        </div>
+      </div>
 
-    /* Active nav */
-    navItems.forEach(function (a) {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-    });
+      <h2 class="wp-h2">Wallet generation</h2>
+      <ol class="wp-ol">
+        <li>A random <strong>12-word seed phrase</strong> is generated automatically when you first log in.</li>
+        <li>Your Solana keypair is derived from that seed phrase using the standard Solana derivation path.</li>
+        <li>All key material is encrypted at rest using strong encryption. Your plain wallet address is what is shown on your dashboard for receiving deposits.</li>
+      </ol>
 
-    /* Breadcrumb */
-    if (BREADCRUMB) BREADCRUMB.textContent = PAGE_LABELS[id] || id;
+      <h2 class="wp-h2">Wallet features</h2>
+      <div class="cards-grid">
+        <div class="wp-card">
+          <div class="wp-card-icon">⬇️</div>
+          <h4>Deposit SOL</h4>
+          <p>Copy your wallet address from the Dashboard and send SOL from any exchange or wallet. Balance updates live via Solana RPC.</p>
+        </div>
+        <div class="wp-card">
+          <img src="images/qr.png" class="wp-card-img" alt="QR" />
+          <h4>QR Code</h4>
+          <p>Tap the QR icon to display a scannable QR code of your wallet address for easy mobile deposits.</p>
+        </div>
+        <div class="wp-card">
+          <img src="images/solana.png" class="wp-card-img" alt="Swap" />
+          <h4>Swap $GOLD → SOL</h4>
+          <p>Convert earned $GOLD to real SOL using the live <strong>SOL/$GOLD</strong> market rate. Minimum 102 $GOLD, 2% fee. SOL is sent directly to your wallet — no third-party exchange needed.</p>
+        </div>
+        <div class="wp-card">
+          <div class="wp-card-icon">🔑</div>
+          <h4>Seed phrase export</h4>
+          <p>Hold the "Reveal" button in Settings for 3 seconds to decrypt and display your 12-word seed phrase. Import it into Phantom or any Solana wallet.</p>
+        </div>
+      </div>
 
-    /* Update page title */
-    document.title = 'SOL Clash — ' + (PAGE_LABELS[id] || id);
+      <h2 class="wp-h2">Single-device session</h2>
+      <p class="wp-p">
+        Only one active session is allowed per account at a time. If you log in on a second device,
+        the first session is invalidated automatically. This prevents shared-account reward farming
+        and keeps the leaderboard fair.
+      </p>
 
-    /* Build / update prev-next inside the active section */
-    buildPrevNext(id, target);
-  }
+      <div class="callout yellow">
+        🔐 SOL Clash staff will <strong>never</strong> ask for your seed phrase or private key.
+        Anyone requesting it is a scammer. Store your seed phrase offline.
+      </div>
 
-  /* ── Build prev/next nav inside section ────────────────────── */
-  function buildPrevNext(id, section) {
-    /* Remove any existing injected pnav */
-    var old = section.querySelector('.pnav-injected');
-    if (old) old.remove();
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Leaderboard</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Fair play</span></div>
+        </button>
+      </div>
+    </section>
 
-    var idx  = PAGE_ORDER.indexOf(id);
-    var prev = idx > 0 ? PAGE_ORDER[idx - 1] : null;
-    var next = idx < PAGE_ORDER.length - 1 ? PAGE_ORDER[idx + 1] : null;
+    <!-- ══════════════════════════════════
+         Fair Play
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-fair-play">
+      <div class="page-tags"><span class="ptag">Platform</span></div>
+      <h1 class="page-title">Fair play</h1>
+      <p class="page-lead">
+        Every competitive run is validated server-side before rewards are issued.
+        Cheating produces no benefit — rewards simply don't process if anomalies are detected.
+      </p>
 
-    if (!prev && !next) return;
+      <h2 class="wp-h2">Anti-cheat measures in place</h2>
+      <div class="cards-grid">
+        <div class="wp-card">
+          <div class="wp-card-icon">⏱️</div>
+          <h4>Score rate limiting</h4>
+          <p>A minimum cooldown is enforced between score submissions. Rapid-fire farming attempts are blocked automatically.</p>
+        </div>
+        <div class="wp-card">
+          <div class="wp-card-icon">🌱</div>
+          <h4>Seed cap</h4>
+          <p>Seeds are capped at <strong>50 per run</strong> regardless of what is reported. Any value above the cap is silently truncated before crediting.</p>
+        </div>
+        <div class="wp-card">
+          <div class="wp-card-icon">🔋</div>
+          <h4>Energy gate</h4>
+          <p>Competitive runs cost 1 Energy and Energy regenerates over real time. Automated bots are throttled by the Energy system.</p>
+        </div>
+        <div class="wp-card">
+          <div class="wp-card-icon">🔒</div>
+          <h4>Single-session lock</h4>
+          <p>One active session per account at all times. Multi-device reward farming is blocked by session ID invalidation.</p>
+        </div>
+        <div class="wp-card">
+          <div class="wp-card-icon">✅</div>
+          <h4>On-chain verification</h4>
+          <p>All SOL purchases are verified on-chain before inventory is updated. No front-running or fake transaction attacks.</p>
+        </div>
+        <div class="wp-card">
+          <div class="wp-card-icon">🛡️</div>
+          <h4>Auth requirement</h4>
+          <p>All reward endpoints require an active authenticated session. Unauthenticated API calls are rejected with HTTP 401.</p>
+        </div>
+      </div>
 
-    var nav = document.createElement('div');
-    nav.className = 'page-nav pnav-injected';
+      <div class="callout yellow">
+        ⚠️ Using auto-clickers, macros, bots, or any input automation is a violation of the
+        Terms of Service and will result in account termination and forfeiture of all balances.
+      </div>
 
-    if (prev) {
-      nav.innerHTML += '<a class="pnav-btn pnav-prev" href="#' + prev + '">' +
-        '<span class="pnav-label">\u2190 PREVIOUS</span>' +
-        '<span class="pnav-title">' + PAGE_LABELS[prev] + '</span>' +
-        '</a>';
-    } else {
-      nav.innerHTML += '<div class="pnav-spacer"></div>';
-    }
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Your wallet</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Roadmap</span></div>
+        </button>
+      </div>
+    </section>
 
-    if (next) {
-      nav.innerHTML += '<a class="pnav-btn pnav-next" href="#' + next + '">' +
-        '<span class="pnav-label">NEXT \u2192</span>' +
-        '<span class="pnav-title">' + PAGE_LABELS[next] + '</span>' +
-        '</a>';
-    } else {
-      nav.innerHTML += '<div class="pnav-spacer"></div>';
-    }
+    <!-- ══════════════════════════════════
+         Roadmap
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-roadmap">
+      <div class="page-tags"><span class="ptag">Platform</span></div>
+      <h1 class="page-title">Roadmap</h1>
+      <p class="page-lead">
+        SOL Clash is live and actively developed. Below is the current state of each
+        phase based on what is actually implemented in the platform today.
+      </p>
 
-    section.appendChild(nav);
+      <div class="roadmap-list">
 
-    /* Wire clicks inside the newly created nav */
-    nav.querySelectorAll('a[href^="#"]').forEach(function (a) {
-      a.addEventListener('click', handleNavClick);
-    });
-  }
+        <div class="roadmap-item">
+          <div class="roadmap-line">
+            <div class="roadmap-dot done"></div>
+            <div class="roadmap-connector"></div>
+          </div>
+          <div class="roadmap-body">
+            <div class="roadmap-phase done">✓ Completed — Q1 2026</div>
+            <div class="roadmap-title">Phase 1: Core Platform</div>
+            <div class="roadmap-chips">
+              <span class="roadmap-chip done">Flappy Bird game engine</span>
+              <span class="roadmap-chip done">OAuth login (Google / GitHub / Discord)</span>
+              <span class="roadmap-chip done">Custodial wallet (auto-generated)</span>
+              <span class="roadmap-chip done">Free to Play mode</span>
+              <span class="roadmap-chip done">Competitive mode</span>
+              <span class="roadmap-chip done">Score leaderboard</span>
+              <span class="roadmap-chip done">Free Nest auto-grant</span>
+            </div>
+          </div>
+        </div>
 
-  /* ── Handle any #hash link click ──────────────────────────── */
-  function handleNavClick(e) {
-    var href = this.getAttribute('href');
-    if (!href || href.charAt(0) !== '#') return;
-    e.preventDefault();
-    var id = href.slice(1);
-    history.pushState(null, '', href);
-    showPage(id);
-    if (window.innerWidth <= 720) closeSidebar();
-  }
+        <div class="roadmap-item">
+          <div class="roadmap-line">
+            <div class="roadmap-dot done"></div>
+            <div class="roadmap-connector"></div>
+          </div>
+          <div class="roadmap-body">
+            <div class="roadmap-phase done">✓ Completed — Q2 2026</div>
+            <div class="roadmap-title">Phase 2: Economy &amp; Progression</div>
+            <div class="roadmap-chips">
+              <span class="roadmap-chip done">$GOLD token + in-game collection</span>
+              <span class="roadmap-chip done">Seeds collectible system</span>
+              <span class="roadmap-chip done">Battle Points (BP) system</span>
+              <span class="roadmap-chip done">5-tier rank system</span>
+              <span class="roadmap-chip done">Energy system (20 slots, nest-based regen)</span>
+              <span class="roadmap-chip done">Nest marketplace (SOL + $GOLD purchase)</span>
+              <span class="roadmap-chip done">Nest upgrade system (Lvl 1–5)</span>
+              <span class="roadmap-chip done">Hatchery / Farm (egg production)</span>
+              <span class="roadmap-chip done">$GOLD → SOL swap (on-chain)</span>
+              <span class="roadmap-chip done">Admin dashboard</span>
+            </div>
+          </div>
+        </div>
 
-  /* Wire all nav-item links */
-  document.querySelectorAll('.nav-item[href^="#"]').forEach(function (a) {
-    a.addEventListener('click', handleNavClick);
-  });
+        <div class="roadmap-item">
+          <div class="roadmap-line">
+            <div class="roadmap-dot active"></div>
+            <div class="roadmap-connector"></div>
+          </div>
+          <div class="roadmap-body">
+            <div class="roadmap-phase active">▶ In progress — Q3 2026</div>
+            <div class="roadmap-title">Phase 3: Social &amp; Expansion</div>
+            <div class="roadmap-chips">
+              <span class="roadmap-chip active">Egg Market (player-to-player egg trading)</span>
+              <span class="roadmap-chip active">Auction house (Nest trading)</span>
+              <span class="roadmap-chip active">Daily challenges</span>
+              <span class="roadmap-chip">Seasonal prize pool distribution</span>
+              <span class="roadmap-chip">Bird skin drops &amp; events</span>
+              <span class="roadmap-chip">Mobile PWA optimisation</span>
+            </div>
+          </div>
+        </div>
 
-  /* Handle browser back/forward */
-  window.addEventListener('popstate', function () {
-    var id = (location.hash || '#intro').slice(1);
-    showPage(id);
-  });
+        <div class="roadmap-item">
+          <div class="roadmap-line">
+            <div class="roadmap-dot"></div>
+            <div class="roadmap-connector"></div>
+          </div>
+          <div class="roadmap-body">
+            <div class="roadmap-phase">Planned — Q4 2026</div>
+            <div class="roadmap-title">Phase 4: Multiplayer &amp; Tournaments</div>
+            <div class="roadmap-chips">
+              <span class="roadmap-chip">Real-time multiplayer arena</span>
+              <span class="roadmap-chip">Tournament brackets</span>
+              <span class="roadmap-chip">Guild / team system</span>
+              <span class="roadmap-chip">Referral rewards</span>
+            </div>
+          </div>
+        </div>
 
-  /* ── Reward tabs ───────────────────────────────────────── */
-  (function () {
-    var tabBtns   = document.querySelectorAll('.rtab-btn');
-    var tabPanels = document.querySelectorAll('.rtab-panel');
+        <div class="roadmap-item">
+          <div class="roadmap-line">
+            <div class="roadmap-dot"></div>
+          </div>
+          <div class="roadmap-body">
+            <div class="roadmap-phase">Future — 2027+</div>
+            <div class="roadmap-title">Phase 5: Ecosystem</div>
+            <div class="roadmap-chips">
+              <span class="roadmap-chip">DEX listing for $GOLD</span>
+              <span class="roadmap-chip">Community governance</span>
+              <span class="roadmap-chip">New game modes</span>
+              <span class="roadmap-chip">Cross-chain bridges</span>
+            </div>
+          </div>
+        </div>
 
-    tabBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var target = 'rpanel-' + btn.dataset.tab;
-        tabBtns.forEach(function (b) {
-          b.classList.remove('active');
-          b.setAttribute('aria-selected', 'false');
-        });
-        tabPanels.forEach(function (p) { p.classList.remove('active'); });
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-        document.getElementById(target).classList.add('active');
-      });
-    });
+      </div>
 
-    document.querySelectorAll('.rmode-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var panel  = btn.closest('.rtab-panel');
-        var modeId = btn.dataset.mode;
-        panel.querySelectorAll('.rmode-btn').forEach(function (b) { b.classList.remove('active'); });
-        panel.querySelectorAll('.rmode-panel').forEach(function (p) { p.classList.remove('active'); });
-        btn.classList.add('active');
-        document.getElementById(modeId).classList.add('active');
-      });
-    });
-  })();
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Fair play</span></div>
+        </button>
+        <button class="pagination-btn pag-next">
+          <div><span class="pag-label">Next →</span><span class="pag-name">Disclaimer</span></div>
+        </button>
+      </div>
+    </section>
 
-  /* ── Initial load ──────────────────────────────────────────── */
-  var initId = (location.hash || '#intro').slice(1);
-  if (!document.getElementById(initId)) initId = 'intro';
-  showPage(initId);
-})();
-</script>
+    <!-- ══════════════════════════════════
+         Disclaimer
+    ══════════════════════════════════ -->
+    <section class="wp-section" id="page-disclaimer">
+      <div class="page-tags"><span class="ptag">Platform</span></div>
+      <h1 class="page-title">Disclaimer</h1>
+      <p class="page-lead">
+        Please read this section carefully before using SOL Clash or acquiring $GOLD.
+      </p>
+
+      <h2 class="wp-h2">Not financial advice</h2>
+      <p class="wp-p">
+        Nothing in this whitepaper constitutes financial, investment, legal, or tax advice.
+        $GOLD is an in-game utility token used within the SOL Clash ecosystem. It is not a security,
+        investment vehicle, or financial instrument.
+      </p>
+
+      <h2 class="wp-h2">Risk disclosure</h2>
+      <ul class="wp-ul">
+        <li><strong>Market risk</strong> — The SOL/$GOLD exchange rate fluctuates. The value of $GOLD expressed in SOL may go up or down at any time.</li>
+        <li><strong>Technology risk</strong> — Solana and platform services can experience outages. We take reasonable precautions but cannot guarantee 100% uptime.</li>
+        <li><strong>Regulatory risk</strong> — Cryptocurrency and play-to-earn regulation varies by jurisdiction. You are responsible for compliance with local laws.</li>
+        <li><strong>Custodial risk</strong> — Your in-game wallet is custodial. SOL Clash holds encrypted keys. Export your seed phrase for non-custodial control.</li>
+        <li><strong>Platform risk</strong> — Game parameters (reward rates, upgrade costs, energy regen) may be adjusted by the team to ensure ecosystem health.</li>
+      </ul>
+
+      <h2 class="wp-h2">Jurisdiction</h2>
+      <p class="wp-p">
+        SOL Clash is not available to residents of jurisdictions where participation in
+        play-to-earn gaming or ownership of cryptocurrency tokens is prohibited by applicable law.
+        It is your sole responsibility to verify local compliance before participating.
+      </p>
+
+      <div class="callout yellow">
+        ⚠️ By using SOL Clash you acknowledge you have read this disclaimer and accept
+        full responsibility for your participation and any associated financial activity.
+      </div>
+
+      <div class="pagination">
+        <button class="pagination-btn pag-prev">
+          <div><span class="pag-label">← Previous</span><span class="pag-name">Roadmap</span></div>
+        </button>
+        <button class="pagination-btn pag-next" disabled>
+          <div><span class="pag-label">Next →</span><span class="pag-name"></span></div>
+        </button>
+      </div>
+    </section>
+
+  </main>
+</div><!-- /layout -->
+
+<script src="js/whitepaper.js"></script>
 </body>
 </html>
